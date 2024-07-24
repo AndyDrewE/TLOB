@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnnneqjdpu21b"]
+
+[ext_resource type="Texture2D" uid="uid://b2j5r73od5ah5" path="res://Assets/inventory/inventory_background.png" id="1_truso"]
+[ext_resource type="PackedScene" uid="uid://cti7vey86swyp" path="res://Scenes/inventory_slot.tscn" id="2_6d7hb"]
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="background" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(256, 192)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_truso")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="slots" type="GridContainer" parent="background"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 26.0
+offset_right = 248.0
+offset_bottom = 92.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 8
+
+[node name="slot0" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot1" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot2" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot3" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot4" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot5" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot6" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot7" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot8" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot9" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot10" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot11" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot12" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot13" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot14" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot15" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2

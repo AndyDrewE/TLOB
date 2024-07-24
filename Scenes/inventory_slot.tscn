@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cti7vey86swyp"]
+
+[ext_resource type="Texture2D" uid="uid://g2bkx2falohs" path="res://Assets/inventory/item_slot_empty_background.png" id="1_ckkef"]
+[ext_resource type="Script" path="res://Scripts/inventory_slot.gd" id="1_x4enr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_onwkq"]
+texture = ExtResource("1_ckkef")
+
+[node name="inventory_slot" type="Panel"]
+custom_minimum_size = Vector2(18, 18)
+offset_right = 18.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_onwkq")
+script = ExtResource("1_x4enr")
