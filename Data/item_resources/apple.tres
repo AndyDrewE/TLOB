@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dbfkat1fkyg2p"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/item.gd" id="1_qn3ya"]
+[ext_resource type="Texture2D" uid="uid://cf7vl6thkvl50" path="res://Assets/items/food/apple_icon.png" id="2_kf3fm"]
+
+[resource]
+script = ExtResource("1_qn3ya")
+name = "apple"
+texture = ExtResource("2_kf3fm")
+stack_size = 99
+description = "It's an apple"
