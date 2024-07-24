@@ -72,7 +72,7 @@ func return_direction(direction: Vector2):
 		returned_direction = "south"
 	elif angle >= 5*PI/8 and angle < 7*PI/8:
 		returned_direction = "southwest"
-	elif angle >= 7*PI/8 and angle < -7*PI/8:
+	elif angle >= 7*PI/8 and angle < 9*PI/8:
 		returned_direction = "west"
 	elif angle >= -7*PI/8 and angle < -5*PI/8:
 		returned_direction = "northwest"
@@ -81,8 +81,8 @@ func return_direction(direction: Vector2):
 	elif angle >= -3*PI/8 and angle < -PI/8:
 		returned_direction = "northeast"
 	else:
+		print("can't find angle")
 		returned_direction = default_return
-	
 	return returned_direction
 	
 
