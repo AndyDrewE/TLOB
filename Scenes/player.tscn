@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cnnneqjdpu21b" path="res://Scenes/inventory.tscn" id="3_ugccf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6gsw"]
-radius = 4.0
-height = 14.0
+radius = 3.0
+height = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cits"]
 atlas = ExtResource("1_bs4a2")
@@ -411,6 +411,7 @@ animations = [{
 script = ExtResource("1_ldnbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_c6gsw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
