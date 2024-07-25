@@ -3,12 +3,15 @@ extends Control
 
 @onready var inventory_slots = $background/slots.get_children()
 
+
+var InventorySlot = preload("res://Scenes/inventory_slot.tscn")
 var held_item = null
 
 
 func _ready():
 	for slot in inventory_slots:
 		slot.gui_input.connect(slot_gui_input.bind(slot))
+	
 
 func _input(event):
 	if held_item:
@@ -18,7 +21,7 @@ func _input(event):
 func slot_gui_input(event : InputEvent, slot : InventorySlot):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			if held_item:
+			if held_item != null: ## If the player is holding an item
 				if !slot.item_node: ##Put held_item in empty slot
 					slot.insert_item(held_item)
 					held_item = null
