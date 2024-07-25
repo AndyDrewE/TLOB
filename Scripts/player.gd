@@ -18,6 +18,8 @@ var current_direction : Vector2
 ##PLAYER STATE 
 var is_dashing = false
 
+##INVENTORY
+
 
 
 func _ready():

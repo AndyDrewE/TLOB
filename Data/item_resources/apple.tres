@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_qn3ya")
-name = "apple"
+name = "Apple"
 texture = ExtResource("2_kf3fm")
 stack_size = 99
 description = "It's an apple"
