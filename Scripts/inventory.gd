@@ -5,8 +5,7 @@ extends Control
 
 var held_item = null
 
-## pick up item, put item in slot
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	for slot in inventory_slots:
 		slot.gui_input.connect(slot_gui_input.bind(slot))
