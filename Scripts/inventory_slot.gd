@@ -1,17 +1,16 @@
 ##inventory_slot.gd
 extends Panel
 
-class_name InventorySlot
-
 var full_tex = preload("res://Assets/inventory/item_slot_background.png")
 var empty_tex = preload("res://Assets/inventory/item_slot_empty_background.png")
 
 var full_style : StyleBoxTexture = null
 var empty_style : StyleBoxTexture = null
 
-
-var ItemNode = preload("res://Scenes/item_node.tscn")
+var ItemNodeScene = preload("res://Scenes/item_node.tscn")
 var item_node = null
+
+@onready var item_amount_label = $item_amount
 var item_amount : int
 
 func _ready():
@@ -19,10 +18,7 @@ func _ready():
 	empty_style = StyleBoxTexture.new()
 	full_style.texture = full_tex
 	empty_style.texture = empty_tex
-	
-	if randi() % 2 == 0:
-		item_node = ItemNode.instantiate()
-		add_child(item_node)
+	item_amount_label.visible = false
 	
 	refresh_style()
 

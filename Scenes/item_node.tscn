@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bphta8ttccbeb"]
+[gd_scene load_steps=3 format=3 uid="uid://bphta8ttccbeb"]
 
 [ext_resource type="Script" path="res://Scripts/item_node.gd" id="1_ge24u"]
+[ext_resource type="Texture2D" uid="uid://coargcevgilia" path="res://Assets/items/weapons/melee/basic_sword_icon.png" id="2_10v2x"]
 
 [node name="item_node" type="Node2D"]
 script = ExtResource("1_ge24u")
@@ -10,3 +11,4 @@ custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
 mouse_filter = 2
+texture = ExtResource("2_10v2x")

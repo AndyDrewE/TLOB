@@ -3,10 +3,8 @@ extends Control
 
 @onready var inventory_slots = $background/slots.get_children()
 
-
-var InventorySlot = preload("res://Scenes/inventory_slot.tscn")
+const InventorySlot = preload("res://Scripts/inventory_slot.gd")
 var held_item = null
-
 
 func _ready():
 	for slot in inventory_slots:
