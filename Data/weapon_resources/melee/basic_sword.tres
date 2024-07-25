@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://dmv46nt86cr5m"]
+
+[ext_resource type="Script" path="res://weapon.gd" id="1_r5kff"]
+[ext_resource type="Texture2D" uid="uid://coargcevgilia" path="res://Assets/items/weapons/melee/basic_sword_icon.png" id="2_rcmyc"]
+
+[resource]
+script = ExtResource("1_r5kff")
+damage = 10
+speed = 1.0
+name = "Basic Sword"
+texture = ExtResource("2_rcmyc")
+stack_size = 1
+description = "A basic sword"
