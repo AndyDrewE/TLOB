@@ -20,21 +20,6 @@ func _ready():
 	empty_style.texture = empty_tex
 	item_amount_label.visible = false
 	
-	if randi() % 2 == 0:
-		item_node = ItemNodeScene.instantiate() as ItemNode
-		item_node.init()
-		
-		if item_node.item != null:
-			if item_node.item is Weapon:
-				item_amount = 1
-				item_amount_label.visible = false
-			else:
-				item_amount = randi_range(1,99)
-				item_amount_label.visible = true
-		else:
-			print("ItemNode item is null")
-		add_child(item_node)
-	
 	refresh_style()
 
 func refresh_style():
