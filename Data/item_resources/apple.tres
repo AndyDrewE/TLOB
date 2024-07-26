@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_qn3ya")
-item_ID = 1
+ID = 0
 name = "Apple"
 texture = ExtResource("2_kf3fm")
 stack_size = 99

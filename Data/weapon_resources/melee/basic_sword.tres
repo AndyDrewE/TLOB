@@ -7,7 +7,7 @@
 script = ExtResource("1_r5kff")
 damage = 10
 speed = 1.0
-item_ID = 2
+ID = 1
 name = "Basic Sword"
 texture = ExtResource("2_rcmyc")
 stack_size = 1
