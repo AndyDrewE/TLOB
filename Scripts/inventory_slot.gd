@@ -47,13 +47,14 @@ func insert_item(new_item_node : ItemNode):
 	var label = item_node.get_node("item_amount")
 	if label:
 		item_amount = int(label.text)
+		item_node.remove_child(label)
 	else:
 		print("Label not found on item_node")
 	
 	## Remove item_node from current parent if it has one
 	if item_node.get_parent() != null:
 		item_node.get_parent().remove_child(item_node)
-	item_node.remove_child(label)
+	
 	
 	add_child(item_node)
 	item_node.position = Vector2(0,0)

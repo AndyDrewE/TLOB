@@ -12,11 +12,11 @@ func _ready():
 		slot.gui_input.connect(slot_gui_input.bind(slot))
 	
 
-func _input(event):
+func _input(_event):
 	if held_item:
 		held_item.global_position = get_global_mouse_position()
 
-
+##TODO: Add stack splitting
 func slot_gui_input(event : InputEvent, slot : InventorySlot):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:

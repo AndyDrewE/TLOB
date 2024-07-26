@@ -37,8 +37,8 @@ func _physics_process(delta):
 	direction_input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction_input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	
-	if abs(direction_input.x) == 1 and abs(direction_input.y) == 1:
-		direction_input = direction_input.normalized()
+	# Trying to normalize direction that way speed is the same in all directions
+	direction_input = direction_input.normalized()
 	
 	if Input.is_action_pressed("ui_sprint"):
 		movement_speed = base_speed * 1.5
