@@ -14,6 +14,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_onwkq")
 script = ExtResource("1_x4enr")
 
 [node name="item_amount" type="Label" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 9.0
 offset_top = 8.0
