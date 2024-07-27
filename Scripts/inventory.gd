@@ -1,20 +1,25 @@
 ##inventory.gd
 extends Control
 
-@onready var inventory_slots = $background/slots.get_children()
+@onready var slots = $background/slots.get_children()
 
 const InventorySlot = preload("res://Scripts/inventory_slot.gd")
 var held_item = null
 var held_item_amount : int
 
 func _ready():
-	for slot in inventory_slots:
+	for slot in slots:
 		slot.gui_input.connect(slot_gui_input.bind(slot))
 	
 
 func _input(_event):
 	if held_item:
 		held_item.global_position = get_global_mouse_position()
+
+func add_to_inventory(item_node : ItemNode):
+	##for loop of slots
+	## if slot is empty, put item in there
+	pass
 
 ##TODO: Add stack splitting
 func slot_gui_input(event : InputEvent, slot : InventorySlot):

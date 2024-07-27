@@ -2,7 +2,9 @@
 
 extends Node2D
 
-@export var max_item_amount_in_scene : int = 10
+const ItemNodeScene = preload("res://Scenes/item_node.tscn")
+
+@export var max_item_amount_in_scene : int = 3
 var item_amount_current : int = 0
 
 var TileMap_current : TileMap
@@ -54,10 +56,10 @@ func get_item(item_ID : int) -> Item:
 func spawn_item(item_ID : int, spawn_location : Vector2) -> ItemNode:
 	var item_resource = get_item(item_ID)
 	if item_resource:
-		var new_item_node = ItemNode.new()
-		new_item_node.init(item_resource)
+		var new_item_node = ItemNodeScene.instantiate()
+		new_item_node.set_item(item_resource)
 		new_item_node.position = spawn_location
-		get_parent().add_child.call_deferred(new_item_node)
+		get_tree().get_root().get_child(2).add_child(new_item_node)
 		item_amount_current += 1
 		return new_item_node
 	return null
