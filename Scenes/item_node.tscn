@@ -17,7 +17,6 @@ shape = SubResource("CircleShape2D_b5mmd")
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
-mouse_filter = 2
 texture = ExtResource("2_10v2x")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
