@@ -44,19 +44,21 @@ func insert_item(new_item_node : ItemNode):
 	#Assign new item node to item node, Assign the value of item_node's label to item_amount
 	item_node = new_item_node
 	#Get label off of item_node
-	var label = item_node.get_node("item_amount")
-	if label:
-		item_amount = int(label.text)
-		item_node.remove_child(label)
-	else:
-		print("Label not found on item_node")
+	if item_node.get_node_or_null("item_amount") != null:
+		item_amount = int(item_node.get_node("item_amount").text)
+		item_node.remove_child(item_node.get_node("item_amount"))
+		
+
+	if item_node.collision_shape.disabled == false:
+		item_node.disable_collision_shape()
 	
 	## Remove item_node from current parent if it has one
 	if item_node.get_parent() != null:
 		item_node.get_parent().remove_child(item_node)
 	
 	
-	add_child(item_node)
+	self.add_child(item_node)
+	
 	item_node.position = Vector2(0,0)
 	refresh_style()
 

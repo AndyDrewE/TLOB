@@ -19,8 +19,10 @@ var current_direction : Vector2
 var is_dashing = false
 
 ##INVENTORY
-@onready var player_inventory = $inventory
+var pickup_enabled = false
+@onready var inventory = $inventory
 var inventory_is_open = false
+var temp_item = null
 
 
 func _ready():
@@ -32,6 +34,11 @@ func _input(event):
 			close_inventory()
 		else:
 			open_inventory()
+			
+	if event.is_action_pressed("ui_interact"):
+		if pickup_enabled:
+			pickup_item(temp_item)
+		## if there's an item close by that the player can pickup, pick it up
 
 func _physics_process(delta):
 	direction_input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -102,11 +109,15 @@ func return_direction(direction: Vector2):
 
 func open_inventory():
 	inventory_is_open = true
-	player_inventory.visible = inventory_is_open
+	inventory.visible = inventory_is_open
 	
 func close_inventory():
 	inventory_is_open = false
-	player_inventory.visible = inventory_is_open
+	inventory.visible = inventory_is_open
+
+func pickup_item(item_node : ItemNode):
+	inventory.add_to_inventory(item_node)
+	
 
 func _on_animated_sprite_2d_animation_finished():
 	if is_dashing:
