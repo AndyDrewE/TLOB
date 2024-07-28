@@ -22,7 +22,11 @@ func add_to_inventory(item_node : ItemNode):
 			slot.insert_item(item_node)
 			slot.change_to_amount(1)
 			return
-	##for loop of slots
+		else:
+			if slot.item_node.item.ID == item_node.item.ID and slot.item_amount < slot.item_node.item.stack_size:
+				slot.change_to_amount(1)
+				item_node.queue_free()
+				return
 	## if slot is empty, put item in there
 	## if the slot isn't empty:
 	##        slot has same item: combine the stacks
@@ -32,7 +36,6 @@ func add_to_inventory(item_node : ItemNode):
 func slot_gui_input(event : InputEvent, slot : InventorySlot):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			print(slot.name)
 			if held_item != null: ## If the player is holding an item
 				##Empty Slot, insert held item into slot
 				if !slot.item_node: 
