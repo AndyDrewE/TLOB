@@ -16,21 +16,21 @@ func _input(_event):
 	if held_item:
 		held_item.global_position = get_global_mouse_position() + Vector2(16,16)
 
+##add to inventory from world
 func add_to_inventory(item_node : ItemNode):
 	for slot in slots:
 		if slot.item_node == null:
 			slot.insert_item(item_node)
 			slot.change_to_amount(1)
+			ItemController.item_amount_current -= 1
 			return
 		else:
 			if slot.item_node.item.ID == item_node.item.ID and slot.item_amount < slot.item_node.item.stack_size:
 				slot.change_to_amount(1)
 				item_node.queue_free()
+				ItemController.item_amount_current -= 1
 				return
-	## if slot is empty, put item in there
-	## if the slot isn't empty:
-	##        slot has same item: combine the stacks
-	## 	      slot has different item, continue on
+	
 
 ##TODO: Add stack splitting
 func slot_gui_input(event : InputEvent, slot : InventorySlot):

@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ItemController="*res://Scripts/ItemController.gd"
-GameController="*res://Scripts/GameController.gd"
+ItemController="*res://Scripts/Autoloads/ItemController.gd"
+GameController="*res://Scripts/Autoloads/GameController.gd"
 
 [dotnet]
 
