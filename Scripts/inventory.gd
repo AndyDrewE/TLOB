@@ -18,13 +18,16 @@ func _input(_event):
 ##add to inventory from world
 func add_to_inventory(add_item_stack : ItemStack):
 	for slot in slots:
+		## If slot is empty, just put it in
 		if slot.item_stack == null:
 			slot.insert_item(add_item_stack)
 			ItemController.stack_amount_current -= 1
 			slot.refresh_style()
 			return
 		else:
+			## If slot has something in it, check to see if they're the same
 			if slot.item_stack.item.ID == add_item_stack.item.ID:
+				##Check stack size and only put in the amount that will fit
 				var item_stack_size = slot.item_stack.item.stack_size
 				var remaining_space = item_stack_size - slot.item_stack.item_amount
 				if remaining_space >= add_item_stack.item_amount:

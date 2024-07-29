@@ -4,7 +4,7 @@ extends Node2D
 
 const ItemStackScene = preload("res://Scenes/item_stack.tscn")
 
-@export var max_item_amount_in_scene : int = 25
+@export var max_stack_amount_in_scene : int = 25
 var stack_amount_current : int = 0
 
 var TileMap_current : TileMap
@@ -20,7 +20,7 @@ func _ready():
 
 func _process(delta):
 	## check if current_item_amount is less than max item amount
-	while stack_amount_current < max_item_amount_in_scene:
+	while stack_amount_current < max_stack_amount_in_scene:
 		spawn_random_item()
 	
 
@@ -32,7 +32,7 @@ func get_spawnable_tiles():
 	
 	return spawnable_tiles
 
-# Function to load item resources, will deprecate into database
+# Function to load item resources, will deprecate into database, maybe, we'll see
 func load_all_items():
 	var item_paths = [
 		"res://Data/item_resources/apple.tres",

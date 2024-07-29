@@ -27,6 +27,7 @@ var temp_item = null
 
 func _ready():
 	movement_speed = base_speed
+	##Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _input(event):
 	if event.is_action_pressed("ui_inventory"):
@@ -61,7 +62,6 @@ func _physics_process(delta):
 	
 	move_and_collide(movement)
 	player_animations(direction_input)
-
 
 func player_animations(update_direction: Vector2):
 	if update_direction != Vector2.ZERO:
@@ -110,10 +110,12 @@ func return_direction(direction: Vector2):
 func open_inventory():
 	inventory_is_open = true
 	inventory.visible = inventory_is_open
+	##Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 func close_inventory():
 	inventory_is_open = false
 	inventory.visible = inventory_is_open
+	##Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func pickup_item(item_node : ItemStack):
 	inventory.add_to_inventory(item_node)
