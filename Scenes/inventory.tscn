@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cti7vey86swyp" path="res://Scenes/inventory_slot.tscn" id="2_6d7hb"]
 
 [node name="inventory" type="Control"]
-z_index = 5
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_lwsub")
@@ -15,6 +14,7 @@ custom_minimum_size = Vector2(256, 192)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(2, 2)
 texture = ExtResource("1_truso")
 patch_margin_left = 8
 patch_margin_top = 8

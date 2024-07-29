@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cu0c4g7j0k3hb" path="res://Assets/player/characterV2.png" id="1_bs4a2"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ldnbu"]
-[ext_resource type="PackedScene" uid="uid://cnnneqjdpu21b" path="res://Scenes/inventory.tscn" id="3_ugccf"]
+[ext_resource type="PackedScene" uid="uid://dtw8sb3up6yul" path="res://Scenes/user_interface.tscn" id="3_yrxjh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6gsw"]
 radius = 3.0
@@ -422,11 +422,6 @@ animation = &"walk_west"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="inventory" parent="." instance=ExtResource("3_ugccf")]
-visible = false
-offset_left = -124.0
-offset_top = -106.0
-offset_right = -124.0
-offset_bottom = -106.0
+[node name="UserInterface" parent="." instance=ExtResource("3_yrxjh")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

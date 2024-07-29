@@ -20,7 +20,7 @@ var is_dashing = false
 
 ##INVENTORY
 var pickup_enabled = false
-@onready var inventory = $inventory
+@onready var inventory = $UserInterface/inventory
 var inventory_is_open = false
 var temp_item = null
 
