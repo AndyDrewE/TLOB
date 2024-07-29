@@ -40,9 +40,7 @@ func add_to_inventory(add_item_stack : ItemStack):
 					slot.item_stack.update_item_amount(remaining_space)
 					add_item_stack.item_amount -= remaining_space
 					slot.refresh_style()
-					
-				
-	
+
 
 ##TODO: Add stack splitting
 func slot_gui_input(event : InputEvent, slot : InventorySlot):

@@ -54,7 +54,7 @@ func get_item(item_ID : int) -> Item:
 	return null
 
 #Spawn item at given position
-func spawn_item(item_ID : int, spawn_location : Vector2, item_amount: int) -> ItemStack:
+func spawn_item(item_ID : int, spawn_location : Vector2) -> ItemStack:
 	var item_resource = get_item(item_ID)
 	var random_amount = randi_range(1,item_resource.stack_size)
 	
@@ -62,7 +62,7 @@ func spawn_item(item_ID : int, spawn_location : Vector2, item_amount: int) -> It
 		var new_item_stack = ItemStackScene.instantiate()
 		new_item_stack.set_item(item_resource)
 		if !(item_resource is Weapon):
-			new_item_stack.set_item_amount(item_amount)
+			new_item_stack.set_item_amount(random_amount)
 		else:
 			new_item_stack.set_item_amount(1)
 		new_item_stack.position = spawn_location
@@ -75,6 +75,5 @@ func spawn_item(item_ID : int, spawn_location : Vector2, item_amount: int) -> It
 func spawn_random_item():
 	var spawn_location = spawnable_tiles[randi() % spawnable_tiles.size()]
 	var random_item_ID = randi() % items.size()
-	var random_amount = randi_range(1,99)
-	spawn_item(random_item_ID, spawn_location, random_amount)
+	spawn_item(random_item_ID, spawn_location)
 	
