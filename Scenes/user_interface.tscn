@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtw8sb3up6yul"]
+[gd_scene load_steps=3 format=3 uid="uid://dtw8sb3up6yul"]
 
 [ext_resource type="PackedScene" uid="uid://cnnneqjdpu21b" path="res://Scenes/inventory.tscn" id="1_r71e1"]
+[ext_resource type="PackedScene" uid="uid://cv5vtoaa6037j" path="res://Scenes/hotbar.tscn" id="2_pxdcl"]
 
 [node name="UserInterface" type="CanvasLayer"]
 
@@ -17,3 +18,12 @@ offset_right = -256.0
 offset_bottom = -192.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="hotbar" parent="." instance=ExtResource("2_pxdcl")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0

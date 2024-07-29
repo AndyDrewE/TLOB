@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv5vtoaa6037j"]
+
+[ext_resource type="Texture2D" uid="uid://dc4k7r4k3m30w" path="res://Assets/inventory/hotbar_background.png" id="1_r8t36"]
+[ext_resource type="PackedScene" uid="uid://b6k3ax0k7b7jf" path="res://Scenes/hotbar_slot.tscn" id="2_cbg2o"]
+
+[node name="hotbar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(2, 2)
+
+[node name="background" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(256, 24)
+layout_mode = 1
+offset_left = -128.0
+offset_top = -36.0
+offset_right = 128.0
+offset_bottom = -12.0
+texture = ExtResource("1_r8t36")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="slots" type="GridContainer" parent="background"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 258.0
+offset_bottom = 26.0
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 10
+
+[node name="hb_slot0" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot1" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot2" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot3" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot4" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot5" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot6" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot7" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot8" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
+
+[node name="hb_slot9" parent="background/slots" instance=ExtResource("2_cbg2o")]
+layout_mode = 2
