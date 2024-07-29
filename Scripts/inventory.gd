@@ -16,8 +16,7 @@ func _input(_event):
 		held_item_stack.global_position = get_global_mouse_position() + Vector2(16,16)
 
 ##add to inventory from world
-func add_to_inventory(add_item_stack : ItemNode):
-	print("Adding %s" %add_item_stack.item_amount)
+func add_to_inventory(add_item_stack : ItemStack):
 	for slot in slots:
 		if slot.item_stack == null:
 			slot.insert_item(add_item_stack)

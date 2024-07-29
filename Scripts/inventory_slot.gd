@@ -36,7 +36,7 @@ func update_amount_label():
 	item_amount_label.text = str(item_stack.item_amount)
 
 
-func insert_item(new_item_stack : ItemNode):
+func insert_item(new_item_stack : ItemStack):
 	#Assign new item node to item node, Assign the value of item_stack's label to item_amount
 	item_stack = new_item_stack
 

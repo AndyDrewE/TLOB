@@ -78,3 +78,123 @@ layout_mode = 2
 
 [node name="slot15" parent="background/slots" instance=ExtResource("2_6d7hb")]
 layout_mode = 2
+
+[node name="slot16" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot17" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot18" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot19" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot20" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot21" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot22" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot23" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot24" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot25" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot26" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot27" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot28" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot29" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot30" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot31" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot32" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot33" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot34" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot35" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot36" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot37" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot38" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot39" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot40" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot41" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot42" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot43" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot44" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot45" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot46" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot47" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot48" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot49" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot50" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot51" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot52" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot53" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot54" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2
+
+[node name="slot55" parent="background/slots" instance=ExtResource("2_6d7hb")]
+layout_mode = 2

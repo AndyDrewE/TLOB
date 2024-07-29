@@ -1,6 +1,6 @@
 ## item_stack.gd
 
-class_name ItemNode
+class_name ItemStack
 
 extends Area2D
 

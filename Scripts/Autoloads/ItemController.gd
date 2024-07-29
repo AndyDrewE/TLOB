@@ -53,9 +53,9 @@ func get_item(item_ID : int) -> Item:
 	return null
 
 #Spawn item at given position
-func spawn_item(item_ID : int, spawn_location : Vector2, item_amount: int) -> ItemNode:
+func spawn_item(item_ID : int, spawn_location : Vector2, item_amount: int) -> ItemStack:
 	var item_resource = get_item(item_ID)
-	var random_amount = randi_range(1,99)
+	var random_amount = randi_range(1,item_resource.stack_size)
 	
 	if item_resource:
 		var new_item_stack = ItemStackScene.instantiate()

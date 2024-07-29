@@ -115,7 +115,7 @@ func close_inventory():
 	inventory_is_open = false
 	inventory.visible = inventory_is_open
 
-func pickup_item(item_node : ItemNode):
+func pickup_item(item_node : ItemStack):
 	inventory.add_to_inventory(item_node)
 	
 
