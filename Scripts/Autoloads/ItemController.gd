@@ -2,10 +2,10 @@
 
 extends Node2D
 
-const ItemNodeScene = preload("res://Scenes/item_node.tscn")
+const ItemStackScene = preload("res://Scenes/item_stack.tscn")
 
 @export var max_item_amount_in_scene : int = 25
-var item_amount_current : int = 0
+var stack_amount_current : int = 0
 
 var TileMap_current : TileMap
 var spawnable_tiles : Array
@@ -20,7 +20,7 @@ func _ready():
 
 func _process(delta):
 	## check if current_item_amount is less than max item amount
-	while item_amount_current < max_item_amount_in_scene:
+	while stack_amount_current < max_item_amount_in_scene:
 		spawn_random_item()
 	
 
@@ -53,20 +53,27 @@ func get_item(item_ID : int) -> Item:
 	return null
 
 #Spawn item at given position
-func spawn_item(item_ID : int, spawn_location : Vector2) -> ItemNode:
+func spawn_item(item_ID : int, spawn_location : Vector2, item_amount: int) -> ItemNode:
 	var item_resource = get_item(item_ID)
+	var random_amount = randi_range(1,99)
+	
 	if item_resource:
-		var new_item_node = ItemNodeScene.instantiate()
-		new_item_node.set_item(item_resource)
-		new_item_node.position = spawn_location
-		get_tree().get_root().get_child(2).add_child(new_item_node)
-		item_amount_current += 1
-		return new_item_node
+		var new_item_stack = ItemStackScene.instantiate()
+		new_item_stack.set_item(item_resource)
+		if !(item_resource is Weapon):
+			new_item_stack.set_item_amount(item_amount)
+		else:
+			new_item_stack.set_item_amount(1)
+		new_item_stack.position = spawn_location
+		get_tree().get_root().get_child(2).add_child(new_item_stack)
+		stack_amount_current += 1
+		return new_item_stack
 	return null
 
 #Spawn random item at random position
 func spawn_random_item():
 	var spawn_location = spawnable_tiles[randi() % spawnable_tiles.size()]
 	var random_item_ID = randi() % items.size()
-	spawn_item(random_item_ID, spawn_location)
+	var random_amount = randi_range(1,99)
+	spawn_item(random_item_ID, spawn_location, random_amount)
 	
