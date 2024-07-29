@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtw8sb3up6yul"]
+[gd_scene load_steps=4 format=3 uid="uid://dtw8sb3up6yul"]
 
+[ext_resource type="Script" path="res://Scripts/user_interface.gd" id="1_hm5nl"]
 [ext_resource type="PackedScene" uid="uid://cnnneqjdpu21b" path="res://Scenes/inventory.tscn" id="1_r71e1"]
 [ext_resource type="PackedScene" uid="uid://cv5vtoaa6037j" path="res://Scenes/hotbar.tscn" id="2_pxdcl"]
 
 [node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_hm5nl")
 
 [node name="inventory" parent="." instance=ExtResource("1_r71e1")]
 visible = false

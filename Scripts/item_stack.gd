@@ -54,11 +54,11 @@ func _on_body_entered(body):
 	if body.name == "player":
 		pickup_enabled = true
 		body.pickup_enabled = pickup_enabled
-		body.temp_item = self
+		body.temp_pickup_item = self
 
 
 func _on_body_exited(body):
 	if body.name == "player":
 		pickup_enabled = false
 		body.pickup_enabled = pickup_enabled
-		body.temp_item = null
+		body.temp_pickup_item = null

@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv5vtoaa6037j"]
+[gd_scene load_steps=4 format=3 uid="uid://cv5vtoaa6037j"]
 
+[ext_resource type="Script" path="res://Scripts/hotbar.gd" id="1_h6dra"]
 [ext_resource type="Texture2D" uid="uid://dc4k7r4k3m30w" path="res://Assets/inventory/hotbar_background.png" id="1_r8t36"]
 [ext_resource type="PackedScene" uid="uid://b6k3ax0k7b7jf" path="res://Scenes/hotbar_slot.tscn" id="2_cbg2o"]
 
@@ -7,6 +8,7 @@
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(2, 2)
+script = ExtResource("1_h6dra")
 
 [node name="background" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(256, 24)

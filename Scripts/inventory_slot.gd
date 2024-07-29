@@ -1,28 +1,43 @@
 ##inventory_slot.gd
 extends Panel
 
+@onready var player_ref = find_parent("player")
+
 var full_tex = preload("res://Assets/inventory/item_slot_background.png")
 var empty_tex = preload("res://Assets/inventory/item_slot_empty_background.png")
+var selected_tex = preload("res://Assets/inventory/item_slot_selected_background.png")
 
 var full_style : StyleBoxTexture = null
 var empty_style : StyleBoxTexture = null
+var selected_style : StyleBoxTexture = null
 
 var ItemStackScene = preload("res://Scenes/item_stack.tscn")
 var item_stack
+var slot_index
+var slot_type
+
+enum SlotType{
+	HOTBAR,
+	INVENTORY
+}
 
 @onready var item_amount_label = $item_amount
 
 func _ready():
 	full_style = StyleBoxTexture.new()
 	empty_style = StyleBoxTexture.new()
+	selected_style = StyleBoxTexture.new()
 	full_style.texture = full_tex
 	empty_style.texture = empty_tex
+	selected_style.texture = selected_tex
 	item_amount_label.visible = false
 	
 	refresh_style()
 
 func refresh_style():
-	if item_stack == null:
+	if SlotType.HOTBAR == slot_type and player_ref.active_item_index == slot_index:
+		set('theme_override_styles/panel', selected_style)
+	elif item_stack == null:
 		set('theme_override_styles/panel', empty_style)
 		item_amount_label.visible = false
 	else:
