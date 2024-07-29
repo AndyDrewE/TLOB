@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6k3ax0k7b7jf"]
+
+[ext_resource type="Texture2D" uid="uid://g2bkx2falohs" path="res://Assets/inventory/item_slot_empty_background.png" id="1_d5c10"]
+[ext_resource type="Script" path="res://Scripts/inventory_slot.gd" id="2_sqeix"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nh06i"]
+texture = ExtResource("1_d5c10")
+
+[node name="hotbar_slot" type="Panel"]
+custom_minimum_size = Vector2(18, 18)
+offset_right = 18.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_nh06i")
+script = ExtResource("2_sqeix")
+
+[node name="item_amount" type="Label" parent="."]
+z_index = 1
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 28.0
+offset_bottom = 31.0
+scale = Vector2(0.4, 0.4)
+text = "99"
+horizontal_alignment = 1

@@ -2,10 +2,10 @@
 
 extends Node2D
 
-const ItemNodeScene = preload("res://Scenes/item_node.tscn")
+const ItemStackScene = preload("res://Scenes/item_stack.tscn")
 
-@export var max_item_amount_in_scene : int = 25
-var item_amount_current : int = 0
+@export var max_stack_amount_in_scene : int = 25
+var stack_amount_current : int = 0
 
 var TileMap_current : TileMap
 var spawnable_tiles : Array
@@ -20,7 +20,7 @@ func _ready():
 
 func _process(delta):
 	## check if current_item_amount is less than max item amount
-	while item_amount_current < max_item_amount_in_scene:
+	while stack_amount_current < max_stack_amount_in_scene:
 		spawn_random_item()
 	
 
@@ -32,11 +32,12 @@ func get_spawnable_tiles():
 	
 	return spawnable_tiles
 
-# Function to load item resources, will deprecate into database
+# Function to load item resources, will deprecate into database, maybe, we'll see
 func load_all_items():
 	var item_paths = [
-		"res://Data/item_resources/apple.tres",
-		"res://Data/weapon_resources/melee/basic_sword.tres"
+		"res://Data/item_resources/food/apple.tres",
+		"res://Data/weapon_resources/melee/basic_sword.tres",
+		"res://Data/item_resources/misc/tree_branch.tres"
 	]
 	
 	for path in item_paths:
@@ -53,15 +54,21 @@ func get_item(item_ID : int) -> Item:
 	return null
 
 #Spawn item at given position
-func spawn_item(item_ID : int, spawn_location : Vector2) -> ItemNode:
+func spawn_item(item_ID : int, spawn_location : Vector2) -> ItemStack:
 	var item_resource = get_item(item_ID)
+	var random_amount = randi_range(1,item_resource.stack_size)
+	
 	if item_resource:
-		var new_item_node = ItemNodeScene.instantiate()
-		new_item_node.set_item(item_resource)
-		new_item_node.position = spawn_location
-		get_tree().get_root().get_child(2).add_child(new_item_node)
-		item_amount_current += 1
-		return new_item_node
+		var new_item_stack = ItemStackScene.instantiate()
+		new_item_stack.set_item(item_resource)
+		if !(item_resource is Weapon):
+			new_item_stack.set_item_amount(random_amount)
+		else:
+			new_item_stack.set_item_amount(1)
+		new_item_stack.position = spawn_location
+		get_tree().get_root().get_child(2).add_child(new_item_stack)
+		stack_amount_current += 1
+		return new_item_stack
 	return null
 
 #Spawn random item at random position

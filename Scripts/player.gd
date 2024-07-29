@@ -2,6 +2,8 @@
 
 extends CharacterBody2D
 
+signal active_item_update
+
 ##ANIMATION 
 @onready var animation_sprite = $AnimatedSprite2D
 var animation : String
@@ -20,24 +22,20 @@ var is_dashing = false
 
 ##INVENTORY
 var pickup_enabled = false
-@onready var inventory = $inventory
-var inventory_is_open = false
-var temp_item = null
+var temp_pickup_item = null
+@onready var inventory = $UserInterface/inventory
+@onready var hotbar = $UserInterface/hotbar
+var active_item_index = 0
 
 
 func _ready():
 	movement_speed = base_speed
+	active_item_update.emit()
 
 func _input(event):
-	if event.is_action_pressed("ui_inventory"):
-		if inventory_is_open:
-			close_inventory()
-		else:
-			open_inventory()
-			
 	if event.is_action_pressed("ui_interact"):
 		if pickup_enabled:
-			pickup_item(temp_item)
+			pickup_item(temp_pickup_item)
 		## if there's an item close by that the player can pickup, pick it up
 
 func _physics_process(delta):
@@ -62,7 +60,6 @@ func _physics_process(delta):
 	move_and_collide(movement)
 	player_animations(direction_input)
 
-
 func player_animations(update_direction: Vector2):
 	if update_direction != Vector2.ZERO:
 		current_direction = update_direction
@@ -74,7 +71,7 @@ func player_animations(update_direction: Vector2):
 		animation  = "idle_" + return_direction(current_direction)
 	
 	animation_sprite.play(animation)
-		
+
 
 func return_direction(direction: Vector2):
 	var default_return = "south"
@@ -107,17 +104,20 @@ func return_direction(direction: Vector2):
 	return returned_direction
 	
 
-func open_inventory():
-	inventory_is_open = true
-	inventory.visible = inventory_is_open
-	
-func close_inventory():
-	inventory_is_open = false
-	inventory.visible = inventory_is_open
-
-func pickup_item(item_node : ItemNode):
+func pickup_item(item_node : ItemStack):
 	inventory.add_to_inventory(item_node)
 	
+
+func active_item_up():
+	active_item_index = (active_item_index + 1) % hotbar.slots.size()
+	active_item_update.emit()
+	
+func active_item_down():
+	if active_item_index == 0:
+		active_item_index = hotbar.slots.size()
+	else:
+		active_item_index -= 1
+	active_item_update.emit()
 
 func _on_animated_sprite_2d_animation_finished():
 	if is_dashing:

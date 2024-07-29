@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bphta8ttccbeb"]
 
-[ext_resource type="Script" path="res://Scripts/item_node.gd" id="1_ge24u"]
-[ext_resource type="Texture2D" uid="uid://coargcevgilia" path="res://Assets/items/weapons/melee/basic_sword_icon.png" id="2_10v2x"]
+[ext_resource type="Script" path="res://Scripts/item_stack.gd" id="1_v1lnu"]
+[ext_resource type="Texture2D" uid="uid://coargcevgilia" path="res://Assets/items/weapons/melee/basic_sword_icon.png" id="2_ramnr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5mmd"]
 radius = 8.0
 
-[node name="item_node" type="Area2D"]
-script = ExtResource("1_ge24u")
+[node name="item_stack" type="Area2D"]
+script = ExtResource("1_v1lnu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
@@ -17,7 +17,7 @@ shape = SubResource("CircleShape2D_b5mmd")
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
-texture = ExtResource("2_10v2x")
+texture = ExtResource("2_ramnr")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
