@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bybfhm42je7kc"]
+
+[ext_resource type="Script" path="res://Scripts/Resource Classes/item.gd" id="1_4jnr7"]
+[ext_resource type="Texture2D" uid="uid://c2gxnqxf4lp5e" path="res://Assets/items/misc/tree_branch_icon.png" id="2_4lyyw"]
+
+[resource]
+script = ExtResource("1_4jnr7")
+ID = 2
+name = "Tree Branch"
+texture = ExtResource("2_4lyyw")
+stack_size = 99
+description = "It's a tree branch, probably fell of a tree."

@@ -35,8 +35,9 @@ func get_spawnable_tiles():
 # Function to load item resources, will deprecate into database, maybe, we'll see
 func load_all_items():
 	var item_paths = [
-		"res://Data/item_resources/apple.tres",
-		"res://Data/weapon_resources/melee/basic_sword.tres"
+		"res://Data/item_resources/food/apple.tres",
+		"res://Data/weapon_resources/melee/basic_sword.tres",
+		"res://Data/item_resources/misc/tree_branch.tres"
 	]
 	
 	for path in item_paths:
