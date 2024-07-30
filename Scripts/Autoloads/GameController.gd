@@ -9,4 +9,6 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("ui_debug"):
 		print("===================")
+		print("Current Health: %s" %player.current_health)
+		print("Current Stamina: %s" %player.current_stamina)
 		print("===================")

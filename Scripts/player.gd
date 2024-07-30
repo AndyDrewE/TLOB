@@ -2,7 +2,10 @@
 
 extends CharacterBody2D
 
+#signals
 signal active_item_update
+signal health_update
+signal stamina_update
 
 ##ANIMATION 
 @onready var animation_sprite = $AnimatedSprite2D
@@ -16,14 +19,27 @@ var direction_input : Vector2
 var current_direction : Vector2
 
 ##PLAYER STATS
+@export var base_health = 100
+var max_health : int = base_health
+var current_health : int = base_health
+var health_regen = 5
+@export var base_stamina = 100
+var max_stamina : int = base_stamina
+var current_stamina : int = base_stamina
+var stamina_regen = 20
+
+var roll_stamina = 10
+var sprint_stamina = 1
+
 
 ##PLAYER STATE 
 var is_rolling = false
 var roll_timer = 0.5
 
-##INVENTORY
+##INVENTORY/UI
 var pickup_enabled = false
 var temp_pickup_item = null
+@onready var UserInterface = $UserInterface
 @onready var inventory = $UserInterface/inventory
 @onready var hotbar = $UserInterface/hotbar
 var active_item_index = 0
@@ -32,12 +48,27 @@ var active_item_index = 0
 func _ready():
 	movement_speed = base_speed
 	active_item_update.emit()
+	health_update.connect(UserInterface.update_health_ui)
+	stamina_update.connect(UserInterface.update_stamina_ui)
 
 func _input(event):
 	if event.is_action_pressed("ui_interact"):
 		if pickup_enabled:
 			pickup_item(temp_pickup_item)
 		## if there's an item close by that the player can pickup, pick it up
+
+
+func _process(delta):
+	var updated_health = min(current_health + health_regen * delta, max_health)
+	if updated_health != current_health:
+		current_health = updated_health
+		health_update.emit(current_health, max_health)
+		
+	var updated_stamina = min(current_stamina + stamina_regen * delta, max_stamina)
+	if updated_stamina != current_stamina:
+		current_stamina = updated_stamina
+		stamina_update.emit(current_stamina, max_stamina)
+
 
 func _physics_process(delta):
 	if !is_rolling:
@@ -49,13 +80,17 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_sprint"):
 		movement_speed = base_speed * 1.5
+		current_stamina -= sprint_stamina
+		stamina_update.emit(current_stamina, max_stamina)
 	elif Input.is_action_just_released("ui_sprint"):
 		movement_speed = base_speed
 	
 	#await get_tree().create_timer(bow_cooldown_time).timeout I want this somewhere probably
-	if Input.is_action_just_pressed("ui_roll"):
+	if Input.is_action_just_pressed("ui_roll") and current_stamina >= roll_stamina:
 		is_rolling = true
 		movement_speed = base_speed * 3
+		current_stamina -= roll_stamina
+		stamina_update.emit(current_stamina, max_stamina)
 		
 	
 	var movement = movement_speed * direction_input * delta
@@ -63,7 +98,7 @@ func _physics_process(delta):
 	
 	move_and_collide(movement)
 	player_animations(direction_input)
-	
+
 
 func player_animations(update_direction: Vector2):
 	if update_direction != Vector2.ZERO:
