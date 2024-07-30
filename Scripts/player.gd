@@ -18,7 +18,8 @@ var current_direction : Vector2
 ##PLAYER STATS
 
 ##PLAYER STATE 
-var is_dashing = false
+var is_rolling = false
+var roll_timer = 0.5
 
 ##INVENTORY
 var pickup_enabled = false
@@ -50,20 +51,27 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("ui_sprint"):
 		movement_speed = base_speed
 	
+	#await get_tree().create_timer(bow_cooldown_time).timeout I want this somewhere probably
 	if Input.is_action_just_pressed("ui_roll"):
-		is_dashing = true
+		is_rolling = true
 		movement_speed = base_speed * 3
+		
 	
 	var movement = movement_speed * direction_input * delta
 	
 	
 	move_and_collide(movement)
 	player_animations(direction_input)
+	
+	if is_rolling:
+		await get_tree().create_timer(roll_timer).timeout
+		movement_speed = base_speed
+		is_rolling = false
 
 func player_animations(update_direction: Vector2):
 	if update_direction != Vector2.ZERO:
 		current_direction = update_direction
-		if is_dashing:
+		if is_rolling:
 			animation = "roll_" + return_direction(current_direction)
 		else:
 			animation = "walk_" + return_direction(current_direction)
@@ -71,7 +79,6 @@ func player_animations(update_direction: Vector2):
 		animation  = "idle_" + return_direction(current_direction)
 	
 	animation_sprite.play(animation)
-
 
 func return_direction(direction: Vector2):
 	var default_return = "south"
@@ -102,17 +109,16 @@ func return_direction(direction: Vector2):
 		print("can't find angle")
 		returned_direction = default_return
 	return returned_direction
-	
+
 
 func pickup_item(item_node : ItemStack):
 	inventory.add_to_inventory(item_node)
-	
 
-func active_item_up():
+func active_item_down():
 	active_item_index = (active_item_index + 1) % hotbar.slots.size()
 	active_item_update.emit()
 	
-func active_item_down():
+func active_item_up():
 	if active_item_index == 0:
 		active_item_index = hotbar.slots.size() - 1
 	else:
@@ -120,6 +126,6 @@ func active_item_down():
 	active_item_update.emit()
 
 func _on_animated_sprite_2d_animation_finished():
-	if is_dashing:
-		is_dashing = false
+	if is_rolling:
+		is_rolling = false
 		movement_speed = base_speed

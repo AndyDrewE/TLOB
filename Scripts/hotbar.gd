@@ -2,8 +2,6 @@
 
 extends "res://Scripts/inventory.gd"
 
-
-
 @onready var hb_slots = $background/slots.get_children()
 var slot_index = 0
 
