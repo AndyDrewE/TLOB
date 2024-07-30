@@ -20,13 +20,13 @@ var current_direction : Vector2
 
 ##PLAYER STATS
 @export var base_health = 100
-var max_health : int = base_health
-var current_health : int = base_health
+var max_health = base_health
+var current_health = base_health
 var health_regen = 5
 @export var base_stamina = 100
-var max_stamina : int = base_stamina
-var current_stamina : int = base_stamina
-var stamina_regen = 20
+var max_stamina = base_stamina
+var current_stamina = base_stamina
+var stamina_regen = 10
 
 var roll_stamina = 10
 var sprint_stamina = 1
