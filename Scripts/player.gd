@@ -145,6 +145,14 @@ func return_direction(direction: Vector2):
 func pickup_item(item_node : ItemStack):
 	inventory.add_to_inventory(item_node)
 
+func get_active_item():
+	var active_item_ref = hotbar.slots[active_item_index].item_stack
+	var active_item_name = "None"
+	if active_item_ref != null:
+		active_item_name = active_item_ref.item.name
+		
+	print("Active item: %s" %active_item_name)
+
 func active_item_down():
 	active_item_index = (active_item_index + 1) % hotbar.slots.size()
 	active_item_update.emit()
@@ -155,7 +163,6 @@ func active_item_up():
 	else:
 		active_item_index -= 1
 	active_item_update.emit()
-
 
 
 func _on_animated_sprite_2d_animation_finished():

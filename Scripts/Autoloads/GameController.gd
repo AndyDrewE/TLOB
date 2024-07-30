@@ -11,4 +11,5 @@ func _input(event):
 		print("===================")
 		print("Current Health: %s" %player.current_health)
 		print("Current Stamina: %s" %player.current_stamina)
+		player.get_active_item()
 		print("===================")
