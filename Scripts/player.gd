@@ -40,8 +40,9 @@ func _input(event):
 		## if there's an item close by that the player can pickup, pick it up
 
 func _physics_process(delta):
-	direction_input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	direction_input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	if !is_rolling:
+		direction_input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		direction_input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	
 	# Trying to normalize direction that way speed is the same in all directions
 	direction_input = direction_input.normalized()
@@ -63,10 +64,6 @@ func _physics_process(delta):
 	move_and_collide(movement)
 	player_animations(direction_input)
 	
-	if is_rolling:
-		await get_tree().create_timer(roll_timer).timeout
-		movement_speed = base_speed
-		is_rolling = false
 
 func player_animations(update_direction: Vector2):
 	if update_direction != Vector2.ZERO:
@@ -110,7 +107,6 @@ func return_direction(direction: Vector2):
 		returned_direction = default_return
 	return returned_direction
 
-
 func pickup_item(item_node : ItemStack):
 	inventory.add_to_inventory(item_node)
 
@@ -124,6 +120,8 @@ func active_item_up():
 	else:
 		active_item_index -= 1
 	active_item_update.emit()
+
+
 
 func _on_animated_sprite_2d_animation_finished():
 	if is_rolling:

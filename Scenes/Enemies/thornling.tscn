@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://cbyjop1f4crar"]
+
+[ext_resource type="Texture2D" uid="uid://snry76bpsrxp" path="res://Assets/Level One Creature sprites/Thornling Attack V2.png" id="1_ouno7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gvfb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgie1"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8t4i"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg77n"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6ruc"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1068e"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8g2v"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idjmj"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtiyg"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gh6x"]
+atlas = ExtResource("1_ouno7")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3skox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgie1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8t4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg77n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6ruc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1068e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8g2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idjmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtiyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gh6x")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}]
+
+[node name="Thornling" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7gvfb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3skox")
+animation = &"attack"
+frame = 8
+frame_progress = 1.0
