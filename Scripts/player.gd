@@ -114,7 +114,7 @@ func active_item_up():
 	
 func active_item_down():
 	if active_item_index == 0:
-		active_item_index = hotbar.slots.size()
+		active_item_index = hotbar.slots.size() - 1
 	else:
 		active_item_index -= 1
 	active_item_update.emit()

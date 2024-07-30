@@ -15,6 +15,7 @@ script = ExtResource("2_sqeix")
 
 [node name="item_amount" type="Label" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = 9.0
 offset_top = 8.0
 offset_right = 28.0
