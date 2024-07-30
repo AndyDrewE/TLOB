@@ -36,6 +36,11 @@ func _ready():
 
 func refresh_style():
 	if SlotType.HOTBAR == slot_type and player_ref.active_item_index == slot_index:
+		if item_stack == null or (item_stack.item is Weapon):
+			item_amount_label.visible = false
+		else: 
+			item_amount_label.visible = true
+		
 		set('theme_override_styles/panel', selected_style)
 	elif item_stack == null:
 		set('theme_override_styles/panel', empty_style)
@@ -43,16 +48,17 @@ func refresh_style():
 	else:
 		if!(item_stack.item is Weapon):
 			item_amount_label.visible = true
-		
 		set('theme_override_styles/panel', full_style)
-		update_amount_label()
+		
+	update_amount_label()
 
 func update_amount_label():
-	item_amount_label.text = str(item_stack.item_amount)
+	if item_stack != null:
+		item_amount_label.text = str(item_stack.item_amount)
 
 
 func insert_item(new_item_stack : ItemStack):
-	#Assign new item node to item node, Assign the value of item_stack's label to item_amount
+	#Assign new item node to item node
 	item_stack = new_item_stack
 
 	if item_stack.collision_shape.disabled == false:
@@ -78,6 +84,5 @@ func remove_item():
 	
 	# reset Item amount and item_stack
 	item_stack = null
-	
 	#Refresh style
 	refresh_style()
