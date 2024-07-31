@@ -84,3 +84,4 @@ func slot_gui_input(event : InputEvent, slot : InventorySlot):
 				find_parent("UserInterface").held_item_stack.item_amount = slot.item_stack.item_amount
 				slot.remove_item()
 				find_parent("UserInterface").held_item_stack.global_position = get_global_mouse_position() + Vector2(16,16)
+			find_parent("UserInterface").get_child(1).update_active_item_label()

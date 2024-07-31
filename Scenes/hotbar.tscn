@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv5vtoaa6037j"]
+[gd_scene load_steps=5 format=3 uid="uid://cv5vtoaa6037j"]
 
 [ext_resource type="Script" path="res://Scripts/hotbar.gd" id="1_h6dra"]
 [ext_resource type="Texture2D" uid="uid://dc4k7r4k3m30w" path="res://Assets/inventory/hotbar_background.png" id="1_r8t36"]
 [ext_resource type="PackedScene" uid="uid://b6k3ax0k7b7jf" path="res://Scenes/hotbar_slot.tscn" id="2_cbg2o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sqirf"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0.166824, 0.0274109, 0, 0)
+shadow_offset = Vector2(0, 0)
 
 [node name="hotbar" type="Control"]
 layout_mode = 3
@@ -22,6 +29,23 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+
+[node name="ActiveItemLabel" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.5
+offset_top = -20.0
+offset_right = 47.5
+offset_bottom = 3.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Sample Text"
+label_settings = SubResource("LabelSettings_sqirf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="slots" type="GridContainer" parent="background"]
 layout_mode = 0
