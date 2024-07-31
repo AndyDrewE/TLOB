@@ -24,4 +24,5 @@ func update_active_item_label():
 	var active_item_name = ""
 	if active_item != null:
 		active_item_name = active_item.item.name
+	player_ref.update_equipped_item(active_item)
 	active_item_label.text = active_item_name

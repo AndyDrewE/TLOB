@@ -43,20 +43,22 @@ var temp_pickup_item = null
 @onready var inventory = $UserInterface/inventory
 @onready var hotbar = $UserInterface/hotbar
 var active_item_index = 0
+var equipped_item : ItemStack = null
 
 
 func _ready():
 	movement_speed = base_speed
-	active_item_update.emit()
+	
 	health_update.connect(UserInterface.update_health_ui)
 	stamina_update.connect(UserInterface.update_stamina_ui)
+		
+	active_item_update.emit()
 
 func _input(event):
 	if event.is_action_pressed("ui_interact"):
 		if pickup_enabled:
 			pickup_item(temp_pickup_item)
 		## if there's an item close by that the player can pickup, pick it up
-
 
 func _process(delta):
 	var updated_health = min(current_health + health_regen * delta, max_health)
@@ -68,7 +70,6 @@ func _process(delta):
 	if updated_stamina != current_stamina:
 		current_stamina = updated_stamina
 		stamina_update.emit(current_stamina, max_stamina)
-
 
 func _physics_process(delta):
 	if !is_rolling:
@@ -164,6 +165,13 @@ func active_item_up():
 		active_item_index -= 1
 	active_item_update.emit()
 
+func update_equipped_item(new_item_stack : ItemStack):
+	if new_item_stack == null and equipped_item != null:
+		equipped_item.queue_free()
+	elif new_item_stack != equipped_item:
+		equipped_item = new_item_stack.duplicate()
+		add_child(equipped_item)
+	
 
 func _on_animated_sprite_2d_animation_finished():
 	if is_rolling:

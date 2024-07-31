@@ -40,7 +40,7 @@ func refresh_style():
 			item_amount_label.visible = false
 		else: 
 			item_amount_label.visible = true
-		
+			
 		set('theme_override_styles/panel', selected_style)
 	elif item_stack == null:
 		set('theme_override_styles/panel', empty_style)

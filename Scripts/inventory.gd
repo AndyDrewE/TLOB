@@ -13,7 +13,7 @@ func _ready():
 		slot.gui_input.connect(slot_gui_input.bind(slot))
 		slot.slot_type = InventorySlot.SlotType.INVENTORY
 		index += 1
-	
+
 
 func _input(_event):
 	if find_parent("UserInterface").held_item_stack:
