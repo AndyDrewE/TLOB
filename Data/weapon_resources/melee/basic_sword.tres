@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_r5kff")
+weapon_type = "melee"
 damage = 10
 speed = 1.0
 ID = 1
