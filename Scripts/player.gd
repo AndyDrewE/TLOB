@@ -35,6 +35,7 @@ var sprint_stamina = 1
 ##PLAYER STATE 
 var is_rolling = false
 var roll_timer = 0.5
+var is_attacking = false
 
 ##INVENTORY/UI
 var pickup_enabled = false
@@ -43,7 +44,7 @@ var temp_pickup_item = null
 @onready var inventory = $UserInterface/inventory
 @onready var hotbar = $UserInterface/hotbar
 var active_item_index = 0
-var equipped_item : ItemStack = null
+var active_item : ItemStack = null
 
 
 func _ready():
@@ -58,7 +59,12 @@ func _input(event):
 	if event.is_action_pressed("ui_interact"):
 		if pickup_enabled:
 			pickup_item(temp_pickup_item)
-		## if there's an item close by that the player can pickup, pick it up
+	
+	if active_item != null:
+		if active_item.item is Weapon:
+			if event.is_action_pressed("ui_attack") and !is_rolling:
+				is_attacking = true
+				player_animations(current_direction)
 
 func _process(delta):
 	var updated_health = min(current_health + health_regen * delta, max_health)
@@ -87,7 +93,7 @@ func _physics_process(delta):
 		movement_speed = base_speed
 	
 	#await get_tree().create_timer(bow_cooldown_time).timeout I want this somewhere probably
-	if Input.is_action_just_pressed("ui_roll") and current_stamina >= roll_stamina:
+	if Input.is_action_just_pressed("ui_roll") and current_stamina >= roll_stamina and !is_attacking:
 		is_rolling = true
 		movement_speed = base_speed * 3
 		current_stamina -= roll_stamina
@@ -96,9 +102,9 @@ func _physics_process(delta):
 	
 	var movement = movement_speed * direction_input * delta
 	
-	
-	move_and_collide(movement)
-	player_animations(direction_input)
+	if !is_attacking:
+		move_and_collide(movement)
+		player_animations(direction_input)
 
 
 func player_animations(update_direction: Vector2):
@@ -106,6 +112,9 @@ func player_animations(update_direction: Vector2):
 		current_direction = update_direction
 		if is_rolling:
 			animation = "roll_" + return_direction(current_direction)
+		elif is_attacking:
+			if get_active_weapon_type() == 0:
+				animation = "melee_" + return_direction(current_direction)
 		else:
 			animation = "walk_" + return_direction(current_direction)
 	else:
@@ -149,10 +158,13 @@ func pickup_item(item_node : ItemStack):
 func get_active_item():
 	var active_item_ref = hotbar.slots[active_item_index].item_stack
 	var active_item_name = "None"
-	if active_item_ref != null:
-		active_item_name = active_item_ref.item.name
+	if active_item_ref.item is Weapon:
+		active_item_name = "TRUE"
 		
-	print("Active item: %s" %active_item_name)
+	print("Active item weapon?: %s" %active_item_name)
+
+func get_active_weapon_type():
+	return active_item.item.weapon_type
 
 func active_item_down():
 	active_item_index = (active_item_index + 1) % hotbar.slots.size()
@@ -165,15 +177,18 @@ func active_item_up():
 		active_item_index -= 1
 	active_item_update.emit()
 
-func update_equipped_item(new_item_stack : ItemStack):
-	if new_item_stack == null and equipped_item != null:
-		equipped_item.queue_free()
-	elif new_item_stack != equipped_item:
-		equipped_item = new_item_stack.duplicate()
-		add_child(equipped_item)
+func update_active_item(new_item_stack : ItemStack):
+	active_item = new_item_stack
+	#if new_item_stack == null and equipped_item != null:
+		#equipped_item.queue_free()
+	#elif new_item_stack != equipped_item:
+		#equipped_item = new_item_stack.duplicate()
+		#add_child(equipped_item)
 	
 
 func _on_animated_sprite_2d_animation_finished():
 	if is_rolling:
 		is_rolling = false
 		movement_speed = base_speed
+	elif is_attacking:
+		is_attacking = false
