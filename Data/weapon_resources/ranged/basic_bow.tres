@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://n4635opeogq2"]
+
+[ext_resource type="Script" path="res://Scripts/Resource Classes/weapon.gd" id="1_2p5kw"]
+[ext_resource type="Texture2D" uid="uid://bp2gwek6rjfh6" path="res://Assets/items/weapons/ranged/basic_bow_icon.png" id="2_a0283"]
+
+[resource]
+script = ExtResource("1_2p5kw")
+damage = 10
+speed = 1.0
+weapon_type = 1
+ID = 3
+name = "Basic Bow"
+texture = ExtResource("2_a0283")
+stack_size = 1
+description = "A basic bow, it looks like it might snap"

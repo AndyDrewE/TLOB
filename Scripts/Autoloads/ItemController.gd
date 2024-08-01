@@ -37,7 +37,8 @@ func load_all_items():
 	var item_paths = [
 		"res://Data/item_resources/food/apple.tres",
 		"res://Data/weapon_resources/melee/basic_sword.tres",
-		"res://Data/item_resources/misc/tree_branch.tres"
+		"res://Data/item_resources/misc/tree_branch.tres",
+		"res://Data/weapon_resources/ranged/basic_bow.tres"
 	]
 	
 	for path in item_paths:
@@ -56,9 +57,9 @@ func get_item(item_ID : int) -> Item:
 #Spawn item at given position
 func spawn_item(item_ID : int, spawn_location : Vector2) -> ItemStack:
 	var item_resource = get_item(item_ID)
-	var random_amount = randi_range(1,item_resource.stack_size)
 	
 	if item_resource:
+		var random_amount = randi_range(1,item_resource.stack_size)
 		var new_item_stack = ItemStackScene.instantiate()
 		new_item_stack.set_item(item_resource)
 		if !(item_resource is Weapon):

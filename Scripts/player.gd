@@ -159,11 +159,12 @@ func get_active_item():
 	var active_item_ref = hotbar.slots[active_item_index].item_stack
 	var active_item_name = "None"
 	if active_item_ref.item is Weapon:
-		active_item_name = "TRUE"
+		active_item_name = active_item_ref.item.name
 		
-	print("Active item weapon?: %s" %active_item_name)
+	print("Active item: %s" %active_item_name)
 
 func get_active_weapon_type():
+	print(active_item.item.weapon_type)
 	return active_item.item.weapon_type
 
 func active_item_down():
