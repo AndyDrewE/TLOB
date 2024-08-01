@@ -3,9 +3,16 @@ extends Item
 
 class_name Weapon
 
-@export var weapon_type : String
+
 @export var damage : int
 @export var speed : float
+
+enum WeaponType{
+	MELEE,
+	RANGED,
+	MAGIC
+}
+@export var weapon_type : WeaponType
 
 
 func _ready():

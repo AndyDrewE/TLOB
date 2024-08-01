@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("1_r5kff")
-weapon_type = "melee"
 damage = 10
 speed = 1.0
+weapon_type = 0
 ID = 1
 name = "Basic Sword"
 texture = ExtResource("2_rcmyc")
