@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbyjop1f4crar"]
+[gd_scene load_steps=20 format=3 uid="uid://cbyjop1f4crar"]
 
 [ext_resource type="Texture2D" uid="uid://snry76bpsrxp" path="res://Assets/Level One Creature sprites/Thornling Attack V2.png" id="1_ouno7"]
+[ext_resource type="Texture2D" uid="uid://cxrv3wqyqmjr2" path="res://Assets/Level One Creature sprites/Thornling Sleeping sprite sheet.png" id="2_i5oey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7gvfb"]
 
@@ -40,6 +41,30 @@ region = Rect2(448, 0, 64, 64)
 atlas = ExtResource("1_ouno7")
 region = Rect2(512, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8twrf"]
+atlas = ExtResource("2_i5oey")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgsum"]
+atlas = ExtResource("2_i5oey")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0bam"]
+atlas = ExtResource("2_i5oey")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a8jv"]
+atlas = ExtResource("2_i5oey")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wr2g"]
+atlas = ExtResource("2_i5oey")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77jor"]
+atlas = ExtResource("2_i5oey")
+region = Rect2(320, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3skox"]
 animations = [{
 "frames": [{
@@ -73,6 +98,29 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8twrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgsum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0bam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a8jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wr2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77jor")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
 }]
 
 [node name="Thornling" type="CharacterBody2D"]
@@ -81,7 +129,8 @@ animations = [{
 shape = SubResource("CircleShape2D_7gvfb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20)
 sprite_frames = SubResource("SpriteFrames_3skox")
-animation = &"attack"
-frame = 8
-frame_progress = 1.0
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.674158

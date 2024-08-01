@@ -61,14 +61,6 @@ func _input(event):
 		if pickup_enabled:
 			pickup_item(temp_pickup_item)
 	
-	if active_item != null:
-		if active_item.item is Weapon:
-			var active_weapon = active_item.item
-			if event.is_action_pressed("ui_attack") and !is_rolling and can_attack:
-				is_attacking = true
-				can_attack = false
-				active_weapon.attack()
-				player_animations(current_direction)
 
 func _process(delta):
 	var updated_health = min(current_health + health_regen * delta, max_health)
@@ -103,6 +95,15 @@ func _physics_process(delta):
 		current_stamina -= roll_stamina
 		stamina_update.emit(current_stamina, max_stamina)
 		
+	
+	if active_item != null:
+		if active_item.item is Weapon:
+			var active_weapon = active_item.item
+			if Input.is_action_just_pressed("ui_attack") and !is_rolling and can_attack:
+				is_attacking = true
+				can_attack = false
+				active_weapon.attack(self, current_direction)
+				player_animations(current_direction)
 	
 	var movement = movement_speed * direction_input * delta
 	
