@@ -36,6 +36,7 @@ var sprint_stamina = 1
 var is_rolling = false
 var roll_timer = 0.5
 var is_attacking = false
+var can_attack = true
 
 ##INVENTORY/UI
 var pickup_enabled = false
@@ -62,8 +63,11 @@ func _input(event):
 	
 	if active_item != null:
 		if active_item.item is Weapon:
-			if event.is_action_pressed("ui_attack") and !is_rolling:
+			var active_weapon = active_item.item
+			if event.is_action_pressed("ui_attack") and !is_rolling and can_attack:
 				is_attacking = true
+				can_attack = false
+				active_weapon.attack()
 				player_animations(current_direction)
 
 func _process(delta):
@@ -86,7 +90,7 @@ func _physics_process(delta):
 	direction_input = direction_input.normalized()
 	
 	if Input.is_action_pressed("ui_sprint"):
-		movement_speed = base_speed * 1.5
+		movement_speed = base_speed * 2
 		current_stamina -= sprint_stamina
 		stamina_update.emit(current_stamina, max_stamina)
 	elif Input.is_action_just_released("ui_sprint"):
@@ -107,13 +111,16 @@ func _physics_process(delta):
 		player_animations(direction_input)
 
 
+## Animation and Direction
 func player_animations(update_direction: Vector2):
 	if update_direction != Vector2.ZERO:
 		current_direction = update_direction
 		if is_rolling:
 			animation = "roll_" + return_direction(current_direction)
 		elif is_attacking:
-			if get_active_weapon_type() == 0:
+			var active_weapon_type = get_active_weapon_type()
+			##TODO: CHANGE THIS WHEN MORE ANIMATIONS ADDED
+			if active_weapon_type != null:
 				animation = "melee_" + return_direction(current_direction)
 		else:
 			animation = "walk_" + return_direction(current_direction)
@@ -152,6 +159,8 @@ func return_direction(direction: Vector2):
 		returned_direction = default_return
 	return returned_direction
 
+
+##Item Handling and Inventory
 func pickup_item(item_node : ItemStack):
 	inventory.add_to_inventory(item_node)
 
@@ -164,7 +173,6 @@ func get_active_item():
 	print("Active item: %s" %active_item_name)
 
 func get_active_weapon_type():
-	print(active_item.item.weapon_type)
 	return active_item.item.weapon_type
 
 func active_item_down():
@@ -187,9 +195,13 @@ func update_active_item(new_item_stack : ItemStack):
 		#add_child(equipped_item)
 	
 
+##Signal Functions
 func _on_animated_sprite_2d_animation_finished():
 	if is_rolling:
 		is_rolling = false
 		movement_speed = base_speed
 	elif is_attacking:
 		is_attacking = false
+		can_attack = true
+
+
