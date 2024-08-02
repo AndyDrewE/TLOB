@@ -12,7 +12,7 @@ signal stamina_update
 var animation : String
 
 ## MOVEMENT 
-@export var base_speed = 50
+@export var base_speed = 75
 var movement_speed = base_speed
 
 var direction_input : Vector2
@@ -51,8 +51,8 @@ var active_item : ItemStack = null
 func _ready():
 	movement_speed = base_speed
 	
-	health_update.connect(UserInterface.update_health_ui)
-	stamina_update.connect(UserInterface.update_stamina_ui)
+	health_update.connect(UserInterface.health_bar.update_health_ui)
+	stamina_update.connect(UserInterface.stamina_bar.update_stamina_ui)
 		
 	active_item_update.emit()
 
@@ -60,7 +60,7 @@ func _input(event):
 	if event.is_action_pressed("ui_interact"):
 		if pickup_enabled:
 			pickup_item(temp_pickup_item)
-	
+
 
 func _process(delta):
 	var updated_health = min(current_health + health_regen * delta, max_health)

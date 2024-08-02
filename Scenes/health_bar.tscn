@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0wcgwdr6gcsk"]
+
+[ext_resource type="Script" path="res://Scripts/health_bar.gd" id="1_dhpjq"]
+
+[node name="health_bar" type="ColorRect"]
+offset_right = 200.0
+offset_bottom = 30.0
+color = Color(0.227451, 0.223529, 0.207843, 1)
+script = ExtResource("1_dhpjq")
+
+[node name="value" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 198.0
+offset_bottom = 28.0
+color = Color(0.909804, 0.32549, 0.47451, 1)

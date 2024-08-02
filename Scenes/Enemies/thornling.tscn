@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://cbyjop1f4crar"]
+[gd_scene load_steps=22 format=3 uid="uid://cbyjop1f4crar"]
 
+[ext_resource type="Script" path="res://Scripts/thornling.gd" id="1_jdaei"]
 [ext_resource type="Texture2D" uid="uid://snry76bpsrxp" path="res://Assets/Level One Creature sprites/Thornling Attack V2.png" id="1_ouno7"]
 [ext_resource type="Texture2D" uid="uid://cxrv3wqyqmjr2" path="res://Assets/Level One Creature sprites/Thornling Sleeping sprite sheet.png" id="2_i5oey"]
+[ext_resource type="PackedScene" uid="uid://b0wcgwdr6gcsk" path="res://Scenes/health_bar.tscn" id="2_on05i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7gvfb"]
 
@@ -124,9 +126,24 @@ animations = [{
 }]
 
 [node name="Thornling" type="CharacterBody2D"]
+script = ExtResource("1_jdaei")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7gvfb")
+
+[node name="health_bar" parent="." instance=ExtResource("2_on05i")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 180.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -20)

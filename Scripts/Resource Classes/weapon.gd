@@ -18,27 +18,31 @@ func _ready():
 	stack_size = 1
 
 func attack(character_node, direction : Vector2):
-	if weapon_type == 0:
-		melee(character_node, direction)
-	elif weapon_type == 1:
-		ranged(character_node, direction)
-	elif weapon_type == 2:
-		magic(character_node, direction)
-	else:
-		print("weapon type not found")
-	
+	match weapon_type:
+		WeaponType.MELEE:
+			melee(character_node, direction)
+		WeaponType.RANGED:
+			ranged(character_node, direction)
+		WeaponType.MAGIC:
+			magic(character_node, direction)
+		_:
+			print("weapon type not found")
+		
 
 func melee(character_node, direction : Vector2):
+	#instantiate and update shapecast
 	var hitbox = ShapeCast2D.new()
 	hitbox.shape = RectangleShape2D.new()
 	hitbox.set_target_position(direction * 16)
 	character_node.add_child(hitbox)
+	hitbox.force_shapecast_update() ##THIS IS IMPORTANT BECAUSE WE'RE NOT IN PHYSICS_PROCESS
 	
-	print(hitbox.is_colliding())
 	if hitbox.is_colliding():
-		var num_of_collisions = hitbox.get_collision_count()
-		for i in range(0, num_of_collisions - 1):
-			print(hitbox.get_collider(i))
+		var num_collisions = hitbox.get_collision_count()
+		for i in range(num_collisions):
+			var collider = hitbox.get_collider(i)
+			if collider.has_method("handle_damage"):
+				collider.handle_damage(damage)
 	
 	await character_node.get_tree().create_timer(0.1).timeout
 	hitbox.queue_free()
