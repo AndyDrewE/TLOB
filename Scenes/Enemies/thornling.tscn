@@ -128,9 +128,6 @@ animations = [{
 [node name="Thornling" type="CharacterBody2D"]
 script = ExtResource("1_jdaei")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_7gvfb")
-
 [node name="health_bar" parent="." instance=ExtResource("2_on05i")]
 anchors_preset = 7
 anchor_left = 0.5
@@ -144,6 +141,9 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.2, 0.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7gvfb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -20)
