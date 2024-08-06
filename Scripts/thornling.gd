@@ -9,15 +9,18 @@ extends CharacterBody2D
 ##Signals
 signal health_update
 
-##ANIMATION 
+##ANIMATION and Collision
 @onready var animation_sprite = $AnimatedSprite2D
 var animation : String
+@onready var collision_shape = $CollisionShape2D
+@onready var hitbox = $hitbox_area/hitbox
+
 
 ## MOVEMENT 
-@export var base_speed = 50
+@export var base_speed = 40
 var movement_speed = base_speed
-
 var direction : Vector2
+
 
 ##ENEMY STATS
 @export var base_health = 30
@@ -25,7 +28,8 @@ var max_health = base_health
 var current_health = base_health
 var health_regen = 1
 @onready var health_bar = $health_bar
-var visibility_radius = 100
+var visibility_radius = 75
+var damage = 10
 
 enum AlertStatus{
 	HIDDEN,
@@ -35,6 +39,8 @@ enum AlertStatus{
 
 ##ENEMY STATE
 var is_attacking = false
+var can_attack = true
+var is_sleeping = false
 var alert_status : AlertStatus = AlertStatus.HIDDEN
 
 
@@ -52,13 +58,22 @@ func _process(delta):
 		
 
 func _physics_process(delta):
-	player_detection()
 	var movement = movement_speed * direction * delta
-	var collision = move_and_collide(movement)
-	
+	update_animation()
+	if !is_sleeping and !is_attacking:
+		var collision = move_and_collide(movement)
 
-func handle_damage(damage):
-	current_health -= damage
+func update_animation():
+	if is_sleeping:
+		animation = "sleep"
+	elif is_attacking:
+		animation = "attack"
+	else:
+		animation = "walk"
+	animation_sprite.play(animation)
+
+func handle_damage(take_damage):
+	current_health -= take_damage
 	if current_health <= 0:
 		die()
 
@@ -70,13 +85,45 @@ func player_detection():
 	
 	if distance_to_player.length() <= 16:
 		direction = Vector2.ZERO
+		attack()
 	elif distance_to_player.length() <= visibility_radius:
 		direction = distance_to_player.normalized()
+		is_sleeping = false
+		$player_not_seen.stop()
 	else:
 		var random_direction = rng.randf()
+		if $player_not_seen.is_stopped():
+			$player_not_seen.start(0)
 		
 		if random_direction < 0.05:
 			direction = Vector2.ZERO
 		elif random_direction < 0.1:
-			direction = Vector2.DOWN.rotated(rng.randf() * 2 * PI)	
+			direction = Vector2.DOWN.rotated(rng.randf() * 2 * PI).normalized()
+	
+
+func attack():
+	if can_attack and !is_attacking:
+		is_attacking = true
+		can_attack = false
+		$attack_cooldown.start()
 		
+		await get_tree().create_timer(0.2).timeout
+		hitbox.disabled = false
+
+func _on_update_movement_timeout():
+	player_detection()
+
+func _on_player_not_seen_timeout():
+	is_sleeping = true
+
+func _on_animated_sprite_2d_animation_finished():
+	is_attacking = false
+	hitbox.disabled = true
+
+func _on_hitbox_area_body_entered(body):
+	if body != self:
+		if body.has_method("handle_damage"):
+			body.handle_damage(damage)
+
+func _on_attack_cooldown_timeout():
+	can_attack = true

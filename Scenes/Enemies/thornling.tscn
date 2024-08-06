@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cbyjop1f4crar"]
+[gd_scene load_steps=19 format=3 uid="uid://cbyjop1f4crar"]
 
 [ext_resource type="Script" path="res://Scripts/thornling.gd" id="1_jdaei"]
 [ext_resource type="PackedScene" uid="uid://b0wcgwdr6gcsk" path="res://Scenes/health_bar.tscn" id="2_on05i"]
@@ -109,6 +109,9 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kb34q"]
+radius = 13.0
+
 [node name="Thornling" type="CharacterBody2D"]
 script = ExtResource("1_jdaei")
 
@@ -135,3 +138,25 @@ animation = &"attack"
 autoplay = "sleep"
 frame = 3
 frame_progress = 1.0
+
+[node name="update_movement" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="player_not_seen" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="hitbox_area" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="hitbox_area"]
+shape = SubResource("CircleShape2D_kb34q")
+disabled = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="update_movement" to="." method="_on_update_movement_timeout"]
+[connection signal="timeout" from="player_not_seen" to="." method="_on_player_not_seen_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="hitbox_area" to="." method="_on_hitbox_area_body_entered"]

@@ -160,6 +160,14 @@ func return_direction(direction: Vector2):
 		returned_direction = default_return
 	return returned_direction
 
+## Damage and Health
+func handle_damage(take_damage):
+	current_health -= take_damage
+	if current_health <= 0:
+		die()
+
+func die():
+	print("You DIED")
 
 ##Item Handling and Inventory
 func pickup_item(item_node : ItemStack):
