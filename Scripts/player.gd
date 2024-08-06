@@ -162,9 +162,14 @@ func return_direction(direction: Vector2):
 
 ## Damage and Health
 func handle_damage(take_damage):
+	set_modulate(Color("ff0000"))
 	current_health -= take_damage
 	if current_health <= 0:
 		die()
+	
+	await get_tree().create_timer(0.2).timeout
+	set_modulate(Color("ffffff"))
+	
 
 func die():
 	print("You DIED")

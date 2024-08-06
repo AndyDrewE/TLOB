@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://nducp5wmivy7"]
+[gd_scene load_steps=71 format=3 uid="uid://nducp5wmivy7"]
 
 [ext_resource type="Texture2D" uid="uid://cu0c4g7j0k3hb" path="res://Assets/player/characterV2.png" id="1_bs4a2"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ldnbu"]
@@ -7,6 +7,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6gsw"]
 radius = 3.0
 height = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07g5p"]
+atlas = ExtResource("1_bs4a2")
+region = Rect2(0, 256, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cits"]
 atlas = ExtResource("1_bs4a2")
@@ -266,6 +270,14 @@ region = Rect2(128, 96, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7i8qr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07g5p")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3cits")
@@ -549,7 +561,8 @@ shape = SubResource("CapsuleShape2D_c6gsw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7i8qr")
-animation = &"melee_west"
+animation = &"damage"
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

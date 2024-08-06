@@ -59,7 +59,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	var movement = movement_speed * direction * delta
-	update_animation()
+	
 	if !is_sleeping and !is_attacking:
 		var collision = move_and_collide(movement)
 
@@ -99,7 +99,9 @@ func player_detection():
 			direction = Vector2.ZERO
 		elif random_direction < 0.1:
 			direction = Vector2.DOWN.rotated(rng.randf() * 2 * PI).normalized()
-	
+			
+	update_animation()
+
 
 func attack():
 	if can_attack and !is_attacking:
