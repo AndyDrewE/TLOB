@@ -61,7 +61,6 @@ func _input(event):
 		if pickup_enabled:
 			pickup_item(temp_pickup_item)
 
-
 func _process(delta):
 	var updated_health = min(current_health + health_regen * delta, max_health)
 	if updated_health != current_health:

@@ -27,7 +27,7 @@ func attack(character_node, direction : Vector2):
 			magic(character_node, direction)
 		_:
 			print("weapon type not found")
-		
+
 
 func melee(character_node, direction : Vector2):
 	#instantiate and update shapecast

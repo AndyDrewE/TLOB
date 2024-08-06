@@ -17,7 +17,7 @@ var animation : String
 
 
 ## MOVEMENT 
-@export var base_speed = 40
+@export var base_speed = 20
 var movement_speed = base_speed
 var direction : Vector2
 
