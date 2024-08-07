@@ -53,8 +53,11 @@ func _ready():
 func _process(delta):
 	var updated_health = min(current_health + health_regen * delta, max_health)
 	if updated_health != current_health:
+		health_bar.visible = true
 		current_health = updated_health
 		health_update.emit(current_health, max_health)
+	else:
+		health_bar.visible = false
 		
 
 func _physics_process(delta):
