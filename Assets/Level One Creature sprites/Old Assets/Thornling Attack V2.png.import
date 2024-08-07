@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://snry76bpsrxp"
-path="res://.godot/imported/Thornling Attack V2.png-57d6d9e238265baadac9091adc84974d.ctex"
+path="res://.godot/imported/Thornling Attack V2.png-a4b46c479a18d7105cfaecf2f8baafa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Level One Creature sprites/Thornling Attack V2.png"
-dest_files=["res://.godot/imported/Thornling Attack V2.png-57d6d9e238265baadac9091adc84974d.ctex"]
+source_file="res://Assets/Level One Creature sprites/Old Assets/Thornling Attack V2.png"
+dest_files=["res://.godot/imported/Thornling Attack V2.png-a4b46c479a18d7105cfaecf2f8baafa3.ctex"]
 
 [params]
 

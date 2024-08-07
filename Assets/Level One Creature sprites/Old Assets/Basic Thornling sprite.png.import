@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dujfdeuysxreq"
-path="res://.godot/imported/Basic Thornling sprite.png-a0924d2360a4d463885ed64460e7259b.ctex"
+path="res://.godot/imported/Basic Thornling sprite.png-f62cb7f6ec018bc9703ef0a0958ce58f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Level One Creature sprites/Basic Thornling sprite.png"
-dest_files=["res://.godot/imported/Basic Thornling sprite.png-a0924d2360a4d463885ed64460e7259b.ctex"]
+source_file="res://Assets/Level One Creature sprites/Old Assets/Basic Thornling sprite.png"
+dest_files=["res://.godot/imported/Basic Thornling sprite.png-f62cb7f6ec018bc9703ef0a0958ce58f.ctex"]
 
 [params]
 
