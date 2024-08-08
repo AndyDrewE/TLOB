@@ -8,7 +8,6 @@ var equipment_slots
 
 
 @onready var player_ref = find_parent("player")
-const InventorySlot = preload("res://Scripts/inventory_slot.gd")
 
 func _ready():
 	var index = 0

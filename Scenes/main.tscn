@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvcnh67l0j2u6"]
+[gd_scene load_steps=10 format=3 uid="uid://bvcnh67l0j2u6"]
 
 [ext_resource type="PackedScene" uid="uid://nducp5wmivy7" path="res://Scenes/player.tscn" id="1_eydq7"]
 [ext_resource type="PackedScene" uid="uid://cbyjop1f4crar" path="res://Scenes/Enemies/thornling.tscn" id="2_w3cqn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bphta8ttccbeb" path="res://Scenes/item_stack.tscn" id="4_04nxt"]
 [ext_resource type="Resource" uid="uid://n4635opeogq2" path="res://Data/weapon_resources/ranged/basic_bow.tres" id="5_pivtg"]
 [ext_resource type="Resource" uid="uid://dpmxsmbv22ypi" path="res://Data/weapon_resources/ranged/ammo/basic_arrow.tres" id="6_vgrj2"]
+[ext_resource type="Resource" uid="uid://dmv46nt86cr5m" path="res://Data/weapon_resources/melee/basic_sword.tres" id="7_arj80"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_moogl"]
 texture = ExtResource("2_yka1d")
@@ -2086,4 +2087,14 @@ item_amount = 1
 [node name="basic_arrows" parent="." instance=ExtResource("4_04nxt")]
 position = Vector2(235, 150)
 item_resource = ExtResource("6_vgrj2")
-item_amount = 3
+item_amount = 30
+
+[node name="basic_arrows2" parent="." instance=ExtResource("4_04nxt")]
+position = Vector2(215, 238)
+item_resource = ExtResource("6_vgrj2")
+item_amount = 20
+
+[node name="basic_sword" parent="." instance=ExtResource("4_04nxt")]
+position = Vector2(194, 137)
+item_resource = ExtResource("7_arj80")
+item_amount = 1

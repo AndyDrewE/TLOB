@@ -38,7 +38,8 @@ func load_all_items():
 		"res://Data/item_resources/food/apple.tres",
 		"res://Data/weapon_resources/melee/basic_sword.tres",
 		"res://Data/item_resources/misc/tree_branch.tres",
-		"res://Data/weapon_resources/ranged/basic_bow.tres"
+		"res://Data/weapon_resources/ranged/basic_bow.tres",
+		"res://Data/weapon_resources/ranged/ammo/basic_arrow.tres"
 	]
 	
 	for path in item_paths:

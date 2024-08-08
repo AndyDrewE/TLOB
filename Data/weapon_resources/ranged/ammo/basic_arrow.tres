@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_52w85")
-ammo_damage = 5
-ammo_speed = 10.0
+ammo_damage = 10
+ammo_speed = 300.0
 ammo_type = 0
 ID = 4
 name = "Basic Arrow"
