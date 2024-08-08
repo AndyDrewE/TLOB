@@ -51,10 +51,19 @@ func melee(character_node, direction : Vector2):
 	hitbox.queue_free()
 
 func ranged(character_node, direction : Vector2):
-	var arrow_instance = arrow_scene.instantiate()
-	arrow_instance.rotation = direction.angle()
-	arrow_instance.global_position = character_node.global_position
-	character_node.add_child(arrow_instance)
+	##TODO: Check ammo slot, see if there is at least 1 ammo, then shoot
+	if character_node.inventory != null:
+		var ammo_stack = character_node.inventory.get_node("background/equipment_slots/ammo_slot").item_stack
+		if ammo_stack != null and ammo_stack.item_amount > 0:
+			print("pew pew")
+			var arrow_instance = arrow_scene.instantiate()
+			arrow_instance.rotation = direction.angle()
+			arrow_instance.global_position = character_node.global_position
+			character_node.add_child(arrow_instance)
+	else:
+		print("no ammo")
+		
+	
 
 
 func magic(character_node, direction : Vector2):

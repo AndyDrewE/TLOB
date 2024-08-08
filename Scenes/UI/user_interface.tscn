@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtw8sb3up6yul"]
 
-[ext_resource type="Script" path="res://Scripts/user_interface.gd" id="1_hm5nl"]
-[ext_resource type="PackedScene" uid="uid://cnnneqjdpu21b" path="res://Scenes/UI/inventory.tscn" id="1_r71e1"]
-[ext_resource type="PackedScene" uid="uid://cv5vtoaa6037j" path="res://Scenes/UI/hotbar.tscn" id="2_pxdcl"]
-[ext_resource type="PackedScene" uid="uid://b0wcgwdr6gcsk" path="res://Scenes/UI/health_bar.tscn" id="4_vnwbx"]
-[ext_resource type="Script" path="res://Scripts/stamina_bar.gd" id="5_787ov"]
+[ext_resource type="Script" path="res://Scripts/user_interface.gd" id="1_bjvai"]
+[ext_resource type="PackedScene" uid="uid://cnnneqjdpu21b" path="res://Scenes/UI/inventory.tscn" id="2_gnd2b"]
+[ext_resource type="PackedScene" uid="uid://cv5vtoaa6037j" path="res://Scenes/UI/hotbar.tscn" id="3_2yqw6"]
+[ext_resource type="PackedScene" uid="uid://b0wcgwdr6gcsk" path="res://Scenes/UI/health_bar.tscn" id="4_0udde"]
+[ext_resource type="Script" path="res://Scripts/stamina_bar.gd" id="5_cpbjw"]
 
 [node name="UserInterface" type="CanvasLayer"]
-script = ExtResource("1_hm5nl")
+script = ExtResource("1_bjvai")
 
-[node name="inventory" parent="." instance=ExtResource("1_r71e1")]
+[node name="inventory" parent="." instance=ExtResource("2_gnd2b")]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,7 +23,7 @@ offset_bottom = -192.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="hotbar" parent="." instance=ExtResource("2_pxdcl")]
+[node name="hotbar" parent="." instance=ExtResource("3_2yqw6")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -32,7 +32,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="health_bar" parent="." instance=ExtResource("4_vnwbx")]
+[node name="health_bar" parent="." instance=ExtResource("4_0udde")]
 offset_left = 10.0
 offset_top = 550.0
 offset_right = 210.0
@@ -44,7 +44,7 @@ offset_top = 585.0
 offset_right = 210.0
 offset_bottom = 615.0
 color = Color(0.227451, 0.223529, 0.207843, 1)
-script = ExtResource("5_787ov")
+script = ExtResource("5_cpbjw")
 
 [node name="value" type="ColorRect" parent="stamina_bar"]
 layout_mode = 0
