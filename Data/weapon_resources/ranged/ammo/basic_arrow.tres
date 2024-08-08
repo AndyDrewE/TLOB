@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ammo" load_steps=3 format=3 uid="uid://dpmxsmbv22ypi"]
+
+[ext_resource type="Script" path="res://Scripts/Resource Classes/ammo.gd" id="1_52w85"]
+[ext_resource type="Texture2D" uid="uid://llkccqtvbec0" path="res://Assets/items/weapons/ranged/ammo/basic_arrow_icon.png" id="2_g2bqo"]
+
+[resource]
+script = ExtResource("1_52w85")
+ammo_damage = 5
+ammo_speed = 10.0
+ammo_type = 0
+ID = 4
+name = "Basic Arrow"
+texture = ExtResource("2_g2bqo")
+stack_size = 99
+description = "A basic arrow, made of wood"
