@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvcnh67l0j2u6"]
+[gd_scene load_steps=8 format=3 uid="uid://bvcnh67l0j2u6"]
 
 [ext_resource type="PackedScene" uid="uid://nducp5wmivy7" path="res://Scenes/player.tscn" id="1_eydq7"]
 [ext_resource type="PackedScene" uid="uid://cbyjop1f4crar" path="res://Scenes/Enemies/thornling.tscn" id="2_w3cqn"]
 [ext_resource type="Texture2D" uid="uid://bkxydjayfyp3t" path="res://Assets/TerrainV2.png" id="2_yka1d"]
+[ext_resource type="PackedScene" uid="uid://bphta8ttccbeb" path="res://Scenes/item_stack.tscn" id="4_04nxt"]
+[ext_resource type="Resource" uid="uid://n4635opeogq2" path="res://Data/weapon_resources/ranged/basic_bow.tres" id="5_pivtg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_moogl"]
 texture = ExtResource("2_yka1d")
@@ -2074,3 +2076,8 @@ position = Vector2(546, 297)
 
 [node name="player" parent="." instance=ExtResource("1_eydq7")]
 position = Vector2(169, 144)
+
+[node name="item_stack" parent="." instance=ExtResource("4_04nxt")]
+position = Vector2(247, 192)
+item_resource = ExtResource("5_pivtg")
+item_amount = 1

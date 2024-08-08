@@ -4,20 +4,20 @@ class_name ItemStack
 
 extends Area2D
 
-var item_icon : TextureRect
+@onready var item_icon : TextureRect = $item_icon
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
 
-var item : Item 
-var item_amount : int = 0
+@export var item_resource : Item 
+@export var item_amount : int = 0
 
 var pickup_enabled = false
 
 func _ready():
-	if item != null:	
+	if item_resource != null:
 		update_item_texture()
 
 func set_item(p_item : Item):
-	item = p_item
+	item_resource = p_item
 	if item_icon:
 		update_item_texture()
 	else:
@@ -29,8 +29,8 @@ func set_item_amount(p_amount : int):
 	item_amount = p_amount
 
 func update_item_texture():
-	if item != null:
-		item_icon.texture = item.texture
+	if item_resource != null:
+		item_icon.texture = item_resource.texture
 	else:
 		print("No item to set texture for")
 

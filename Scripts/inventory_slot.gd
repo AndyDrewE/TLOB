@@ -36,7 +36,7 @@ func _ready():
 
 func refresh_style():
 	if SlotType.HOTBAR == slot_type and player_ref.active_item_index == slot_index:
-		if item_stack == null or (item_stack.item is Weapon):
+		if item_stack == null or (item_stack.item_resource is Weapon):
 			item_amount_label.visible = false
 		else: 
 			item_amount_label.visible = true
@@ -46,7 +46,7 @@ func refresh_style():
 		set('theme_override_styles/panel', empty_style)
 		item_amount_label.visible = false
 	else:
-		if!(item_stack.item is Weapon):
+		if!(item_stack.item_resource is Weapon):
 			item_amount_label.visible = true
 		set('theme_override_styles/panel', full_style)
 		

@@ -23,6 +23,6 @@ func update_active_item_label():
 	var active_item = slots[player_ref.active_item_index].item_stack
 	var active_item_name = ""
 	if active_item != null:
-		active_item_name = active_item.item.name
+		active_item_name = active_item.item_resource.name
 	player_ref.update_active_item(active_item)
 	active_item_label.text = active_item_name

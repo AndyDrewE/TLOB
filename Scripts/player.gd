@@ -96,8 +96,8 @@ func _physics_process(delta):
 		
 	
 	if active_item != null:
-		if active_item.item is Weapon:
-			var active_weapon = active_item.item
+		if active_item.item_resource is Weapon:
+			var active_weapon = active_item.item_resource
 			if Input.is_action_just_pressed("ui_attack") and !is_rolling and can_attack:
 				is_attacking = true
 				can_attack = false
@@ -186,7 +186,7 @@ func get_active_item():
 	print("Active item: %s" %active_item_name)
 
 func get_active_weapon_type():
-	return active_item.item.weapon_type
+	return active_item.item_resource.weapon_type
 
 func active_item_down():
 	active_item_index = (active_item_index + 1) % hotbar.slots.size()

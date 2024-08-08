@@ -4,7 +4,7 @@ extends Node2D
 
 const ItemStackScene = preload("res://Scenes/item_stack.tscn")
 
-@export var max_stack_amount_in_scene : int = 25
+@export var max_stack_amount_in_scene : int = 0
 var stack_amount_current : int = 0
 
 var TileMap_current : TileMap
