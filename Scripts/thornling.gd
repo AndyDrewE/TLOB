@@ -23,7 +23,7 @@ var direction : Vector2
 
 
 ##ENEMY STATS
-@export var base_health = 30
+@export var base_health = 300
 var max_health = base_health
 var current_health = base_health
 var health_regen = 1
