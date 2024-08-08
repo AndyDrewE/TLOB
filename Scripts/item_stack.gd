@@ -36,6 +36,13 @@ func update_item_texture():
 
 func update_item_amount(change : int):
 	item_amount += change
+	
+	if item_amount <= 0:
+		self.get_parent().remove_item()
+	
+	if self.get_parent() is InventorySlot:
+		self.get_parent().update_amount_label()
+	
 
 func enable_collision_shape():
 	collision_shape.disabled = false

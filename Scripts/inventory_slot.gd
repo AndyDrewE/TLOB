@@ -1,6 +1,8 @@
 ##inventory_slot.gd
 extends Panel
 
+class_name InventorySlot
+
 @onready var player_ref = find_parent("player")
 
 var full_tex = preload("res://Assets/inventory/item_slot_background.png")
@@ -78,6 +80,10 @@ func insert_item(new_item_stack : ItemStack):
 func remove_item():
 	# Remove the item_stack from this slot node
 	remove_child(item_stack)
+	
+	##If there's no more item
+	if item_stack.item_amount == 0:
+		item_stack.queue_free()
 	# Add item_stack to inventory backround
 	## Add item into inventory_background node so that it can follow mouse cursor
 	var background_node = find_parent("background")

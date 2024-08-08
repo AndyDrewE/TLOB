@@ -2086,4 +2086,4 @@ item_amount = 1
 [node name="basic_arrows" parent="." instance=ExtResource("4_04nxt")]
 position = Vector2(235, 150)
 item_resource = ExtResource("6_vgrj2")
-item_amount = 30
+item_amount = 3
