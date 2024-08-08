@@ -3,6 +3,8 @@ extends Item
 
 class_name Weapon
 
+var arrow_scene = preload("res://Scenes/arrow.tscn")
+
 
 @export var damage : int
 @export var speed : float
@@ -28,6 +30,8 @@ func attack(character_node, direction : Vector2):
 		_:
 			print("weapon type not found")
 
+
+##TODO: Refactor into a few seperate weapon classes 
 func melee(character_node, direction : Vector2):
 	#instantiate and update shapecast
 	var hitbox = ShapeCast2D.new()
@@ -47,7 +51,11 @@ func melee(character_node, direction : Vector2):
 	hitbox.queue_free()
 
 func ranged(character_node, direction : Vector2):
-	print("Ranged by %s" %character_node)
+	var arrow_instance = arrow_scene.instantiate()
+	arrow_instance.rotation = direction.angle()
+	arrow_instance.global_position = character_node.global_position
+	character_node.add_child(arrow_instance)
+
 
 func magic(character_node, direction : Vector2):
 	print("Magic by %s" %character_node)

@@ -18,7 +18,8 @@ var slot_type
 
 enum SlotType{
 	HOTBAR,
-	INVENTORY
+	INVENTORY,
+	AMMO
 }
 
 @onready var item_amount_label = $item_amount

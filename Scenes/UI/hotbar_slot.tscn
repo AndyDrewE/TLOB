@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6k3ax0k7b7jf"]
 
-[ext_resource type="Texture2D" uid="uid://g2bkx2falohs" path="res://Assets/inventory/item_slot_empty_background.png" id="1_d5c10"]
-[ext_resource type="Script" path="res://Scripts/inventory_slot.gd" id="2_sqeix"]
+[ext_resource type="Texture2D" uid="uid://g2bkx2falohs" path="res://Assets/inventory/item_slot_empty_background.png" id="1_1w88x"]
+[ext_resource type="Script" path="res://Scripts/inventory_slot.gd" id="2_wfxwl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nh06i"]
-texture = ExtResource("1_d5c10")
+texture = ExtResource("1_1w88x")
 
 [node name="hotbar_slot" type="Panel"]
 custom_minimum_size = Vector2(18, 18)
 offset_right = 18.0
 offset_bottom = 18.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_nh06i")
-script = ExtResource("2_sqeix")
+script = ExtResource("2_wfxwl")
 
 [node name="item_amount" type="Label" parent="."]
 z_index = 1

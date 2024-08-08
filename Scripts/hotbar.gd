@@ -1,6 +1,7 @@
 ##hotbar.gd
+class_name Hotbar
 
-extends "res://Scripts/inventory.gd"
+extends Inventory
 
 @onready var hb_slots = $background/slots.get_children()
 @onready var active_item_label = $background/ActiveItemLabel

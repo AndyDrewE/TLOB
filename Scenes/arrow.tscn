@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci2ypypxd5hqb"]
+
+[ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_a34x3"]
+[ext_resource type="Texture2D" uid="uid://llkccqtvbec0" path="res://Assets/items/weapons/ranged/ammo/basic_arrow_icon.png" id="1_fmv2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fckw"]
+size = Vector2(16, 8)
+
+[node name="arrow" type="Area2D"]
+script = ExtResource("1_a34x3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fmv2p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0fckw")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(0.1, 0.4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
