@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/hotbar.gd" id="1_h6dra"]
 [ext_resource type="Texture2D" uid="uid://dc4k7r4k3m30w" path="res://Assets/inventory/hotbar_background.png" id="1_r8t36"]
-[ext_resource type="PackedScene" uid="uid://b6k3ax0k7b7jf" path="res://Scenes/hotbar_slot.tscn" id="2_cbg2o"]
+[ext_resource type="PackedScene" uid="uid://b6k3ax0k7b7jf" path="res://Scenes/UI/hotbar_slot.tscn" id="2_cbg2o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sqirf"]
 outline_size = 6

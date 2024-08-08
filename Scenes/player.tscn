@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cu0c4g7j0k3hb" path="res://Assets/player/characterV2.png" id="1_bs4a2"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ldnbu"]
-[ext_resource type="PackedScene" uid="uid://dtw8sb3up6yul" path="res://Scenes/user_interface.tscn" id="3_yrxjh"]
+[ext_resource type="PackedScene" uid="uid://dtw8sb3up6yul" path="res://Scenes/UI/user_interface.tscn" id="3_yrxjh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6gsw"]
 radius = 3.0

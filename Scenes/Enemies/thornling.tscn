@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cbyjop1f4crar"]
 
 [ext_resource type="Script" path="res://Scripts/thornling.gd" id="1_jdaei"]
-[ext_resource type="PackedScene" uid="uid://b0wcgwdr6gcsk" path="res://Scenes/health_bar.tscn" id="2_on05i"]
+[ext_resource type="PackedScene" uid="uid://b0wcgwdr6gcsk" path="res://Scenes/UI/health_bar.tscn" id="2_on05i"]
 [ext_resource type="Texture2D" uid="uid://dn4kmn28ai2t2" path="res://Assets/Level One Creature sprites/Thornling/Thornling 16x16 Sprite Sheet.png" id="3_vw2dx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7gvfb"]

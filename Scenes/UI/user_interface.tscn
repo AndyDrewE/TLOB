@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtw8sb3up6yul"]
 
 [ext_resource type="Script" path="res://Scripts/user_interface.gd" id="1_hm5nl"]
-[ext_resource type="PackedScene" uid="uid://cnnneqjdpu21b" path="res://Scenes/inventory.tscn" id="1_r71e1"]
-[ext_resource type="PackedScene" uid="uid://cv5vtoaa6037j" path="res://Scenes/hotbar.tscn" id="2_pxdcl"]
-[ext_resource type="PackedScene" uid="uid://b0wcgwdr6gcsk" path="res://Scenes/health_bar.tscn" id="4_vnwbx"]
+[ext_resource type="PackedScene" uid="uid://cnnneqjdpu21b" path="res://Scenes/UI/inventory.tscn" id="1_r71e1"]
+[ext_resource type="PackedScene" uid="uid://cv5vtoaa6037j" path="res://Scenes/UI/hotbar.tscn" id="2_pxdcl"]
+[ext_resource type="PackedScene" uid="uid://b0wcgwdr6gcsk" path="res://Scenes/UI/health_bar.tscn" id="4_vnwbx"]
 [ext_resource type="Script" path="res://Scripts/stamina_bar.gd" id="5_787ov"]
 
 [node name="UserInterface" type="CanvasLayer"]

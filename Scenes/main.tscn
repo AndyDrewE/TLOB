@@ -2077,7 +2077,7 @@ position = Vector2(546, 297)
 [node name="player" parent="." instance=ExtResource("1_eydq7")]
 position = Vector2(169, 144)
 
-[node name="item_stack" parent="." instance=ExtResource("4_04nxt")]
+[node name="basic_bow" parent="." instance=ExtResource("4_04nxt")]
 position = Vector2(247, 192)
 item_resource = ExtResource("5_pivtg")
 item_amount = 1

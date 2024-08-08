@@ -28,7 +28,6 @@ func attack(character_node, direction : Vector2):
 		_:
 			print("weapon type not found")
 
-
 func melee(character_node, direction : Vector2):
 	#instantiate and update shapecast
 	var hitbox = ShapeCast2D.new()
