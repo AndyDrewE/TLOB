@@ -1,15 +1,12 @@
 ##player.gd
 
-extends CharacterBody2D
+extends Character
 
 #signals
 signal active_item_update
 signal health_update
 signal stamina_update
 
-##ANIMATION 
-@onready var animation_sprite = $AnimatedSprite2D
-var animation : String
 
 ## MOVEMENT 
 @export var base_speed = 75

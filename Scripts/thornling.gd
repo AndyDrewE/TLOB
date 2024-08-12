@@ -1,6 +1,6 @@
 ##thornling.gd
 
-extends CharacterBody2D
+extends Character
 
 ##Global Player Reference
 @onready var player_ref = GameController.player_ref
@@ -9,9 +9,7 @@ extends CharacterBody2D
 ##Signals
 signal health_update
 
-##ANIMATION and Collision
-@onready var animation_sprite = $AnimatedSprite2D
-var animation : String
+
 @onready var collision_shape = $CollisionShape2D
 @onready var hitbox = $hitbox_area/hitbox
 
