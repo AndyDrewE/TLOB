@@ -9,22 +9,14 @@ extends Character
 ##Signals
 signal health_update
 
-
 @onready var collision_shape = $CollisionShape2D
 @onready var hitbox = $hitbox_area/hitbox
 
 
 ## MOVEMENT 
-@export var base_speed = 20
-var movement_speed = base_speed
 var direction : Vector2
 
-
 ##ENEMY STATS
-@export var base_health = 300
-var max_health = base_health
-var current_health = base_health
-var health_regen = 1
 @onready var health_bar = $health_bar
 var visibility_radius = 75
 var damage = 10
@@ -46,6 +38,21 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
+	
+	##Setting up movement speed from Character Class	
+	base_speed = rng.randi_range(15,25)
+	movement_speed = base_speed
+	
+	##Setting up stats from Character Class
+	base_health = rng.randi_range(100,500)
+	max_health = base_health
+	current_health = base_health
+	health_regen = 1
+	base_stamina = rng.randi_range(50,150)
+	max_stamina = base_stamina
+	current_stamina = base_stamina
+	stamina_regen = 5
+	
 	health_update.connect(health_bar.update_health_ui)
 
 func _process(delta):

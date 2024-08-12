@@ -2075,6 +2075,7 @@ layer_1/tile_data = PackedInt32Array(983064, 1441792, 30, 917528, 1441792, 30, 8
 
 [node name="Thornling" parent="." instance=ExtResource("2_w3cqn")]
 position = Vector2(546, 297)
+base_speed = 75
 
 [node name="player" parent="." instance=ExtResource("1_eydq7")]
 position = Vector2(169, 144)
