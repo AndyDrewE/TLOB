@@ -1,0 +1,3 @@
+##NPC.gd
+
+extends Character
