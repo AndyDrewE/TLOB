@@ -1,36 +1,19 @@
 ##player.gd
 
-extends CharacterBody2D
+extends Character
 
 #signals
 signal active_item_update
 signal health_update
 signal stamina_update
 
-##ANIMATION 
-@onready var animation_sprite = $AnimatedSprite2D
-var animation : String
-
-## MOVEMENT 
-@export var base_speed = 75
-var movement_speed = base_speed
-
+##DIRECTION INFORMATION
 var direction_input : Vector2
 var current_direction : Vector2
 
-##PLAYER STATS
-@export var base_health = 100
-var max_health = base_health
-var current_health = base_health
-var health_regen = 5
-@export var base_stamina = 100
-var max_stamina = base_stamina
-var current_stamina = base_stamina
-var stamina_regen = 10
-
+##PLAYER STAMINA COSTS
 var roll_stamina = 10
 var sprint_stamina = 1
-
 
 ##PLAYER STATE 
 var is_rolling = false
@@ -49,7 +32,20 @@ var active_item : ItemStack = null
 
 
 func _ready():
+	##Setting up movement speed from Character Class	
+	base_speed = 75
 	movement_speed = base_speed
+	
+	##Setting up player stats from Character Class
+	base_health = 100
+	max_health = base_health
+	current_health = base_health
+	health_regen = 3
+	base_stamina = 100
+	max_stamina = base_stamina
+	current_stamina = base_stamina
+	stamina_regen = 5
+	
 	
 	health_update.connect(UserInterface.health_bar.update_health_ui)
 	stamina_update.connect(UserInterface.stamina_bar.update_stamina_ui)
@@ -87,7 +83,7 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("ui_sprint"):
 		movement_speed = base_speed
 	
-	#await get_tree().create_timer(bow_cooldown_time).timeout I want this somewhere probably
+	
 	if Input.is_action_just_pressed("ui_roll") and current_stamina >= roll_stamina and !is_attacking:
 		is_rolling = true
 		movement_speed = base_speed * 3
@@ -109,7 +105,6 @@ func _physics_process(delta):
 	if !is_attacking:
 		move_and_collide(movement)
 		player_animations(direction_input)
-
 
 ## Animation and Direction
 func player_animations(update_direction: Vector2):
