@@ -1,0 +1,3 @@
+##bubbles.gd
+
+extends NPC

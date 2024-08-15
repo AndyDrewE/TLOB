@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://djww6vivyyih4"]
+
+[ext_resource type="Script" path="res://Scripts/NPCs/bubbles.gd" id="1_cwt00"]
+[ext_resource type="Texture2D" uid="uid://c5irpc62gpgb0" path="res://Assets/NPCs/Bubbles/Bubbles, Lord of Darkness.png" id="2_mrkxb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ehl1"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xnsm"]
+atlas = ExtResource("2_mrkxb")
+region = Rect2(0, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w26wy"]
+atlas = ExtResource("2_mrkxb")
+region = Rect2(16, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdybh"]
+atlas = ExtResource("2_mrkxb")
+region = Rect2(32, 64, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sahkc"]
+atlas = ExtResource("2_mrkxb")
+region = Rect2(48, 64, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rhs6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xnsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w26wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdybh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sahkc")
+}],
+"loop": true,
+"name": &"idle_south",
+"speed": 2.0
+}]
+
+[node name="Bubbles" type="CharacterBody2D"]
+script = ExtResource("1_cwt00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_5ehl1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rhs6p")
+animation = &"idle_south"
+autoplay = "idle_south"
+frame_progress = 0.397927

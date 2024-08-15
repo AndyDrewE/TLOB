@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://nducp5wmivy7" path="res://Scenes/player.tscn" id="1_eydq7"]
 [ext_resource type="PackedScene" uid="uid://cbyjop1f4crar" path="res://Scenes/Enemies/thornling.tscn" id="2_w3cqn"]
 [ext_resource type="Texture2D" uid="uid://bkxydjayfyp3t" path="res://Assets/TerrainV2.png" id="2_yka1d"]
-[ext_resource type="PackedScene" uid="uid://wkasw45xb8s1" path="res://Scenes/npc.tscn" id="3_ktedg"]
 [ext_resource type="PackedScene" uid="uid://bphta8ttccbeb" path="res://Scenes/item_stack.tscn" id="4_04nxt"]
 [ext_resource type="Resource" uid="uid://n4635opeogq2" path="res://Data/weapon_resources/ranged/basic_bow.tres" id="5_pivtg"]
 [ext_resource type="Resource" uid="uid://dpmxsmbv22ypi" path="res://Data/weapon_resources/ranged/ammo/basic_arrow.tres" id="6_vgrj2"]
 [ext_resource type="Resource" uid="uid://dmv46nt86cr5m" path="res://Data/weapon_resources/melee/basic_sword.tres" id="7_arj80"]
+[ext_resource type="PackedScene" uid="uid://djww6vivyyih4" path="res://Scenes/NPCs/bubbles.tscn" id="8_xtk6l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_moogl"]
 texture = ExtResource("2_yka1d")
@@ -2077,9 +2077,6 @@ layer_1/tile_data = PackedInt32Array(983064, 1441792, 30, 917528, 1441792, 30, 8
 [node name="Thornling" parent="." instance=ExtResource("2_w3cqn")]
 position = Vector2(916, 494)
 
-[node name="NPC" parent="." instance=ExtResource("3_ktedg")]
-position = Vector2(302, 154)
-
 [node name="player" parent="." instance=ExtResource("1_eydq7")]
 position = Vector2(169, 144)
 
@@ -2102,3 +2099,6 @@ item_amount = 20
 position = Vector2(194, 137)
 item_resource = ExtResource("7_arj80")
 item_amount = 1
+
+[node name="Bubbles" parent="." instance=ExtResource("8_xtk6l")]
+position = Vector2(263, 133)
