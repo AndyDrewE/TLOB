@@ -283,5 +283,5 @@ shape = SubResource("CapsuleShape2D_5ehl1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rhs6p")
-animation = &"idle_east"
-frame_progress = 0.0802996
+animation = &"idle_south"
+autoplay = "idle_south"
